@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Revuu-IT</title>
+        <link rel="shortcut icon" href="../images/favicon.png" type="image/x-icon">
+        <!-- Fontawesome Icons-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <!--Google Fonts-->
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+		<!-- Bulma Version 0.9.0-->
+		<link rel="stylesheet" href="https://unpkg.com/bulma@0.9.0/css/bulma.min.css" />
+        <link rel="stylesheet" href="{{ url_for('static',filename='css/forum.css') }}" type="text/css" >
+        <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}" type="text/css" >
+        {% block styles %}
+        {% endblock %}
+        
+	</head>
+	<body>
+		<nav class="navbar is-white topNav">
+			<div class="container">
+				<div class="navbar-brand">
+					<a class="navbar-item" href="../">
+						RevUU-IT
+					</a>
+					<div class="navbar-burger burger" data-target="topNav">
+						<span></span>
+						<span></span>
+						<span></span>
+					</div>
+				</div>
+				<div id="topNav" class="navbar-menu">
+					<div class="navbar-start">
+						<a class="navbar-item" href="#">Home</a>
+						
+						<a class="navbar-item" href="#">Search</a>
+						<a class="navbar-item" href="#">Categories</a>
+					</div>
+					<div class="navbar-end">
+						<div class="navbar-item">
+							<div class="field is-grouped">
+								<p class="control">
+									<a class="button is-small">
+										<span class="icon">
+											<i class="fa fa-user-plus"></i>
+										</span>
+										<span>
+											Register
+										</span>
+									</a>
+								</p>
+								<p class="control">
+									<a class="button is-small is-info is-outlined">
+										<span class="icon">
+											<i class="fa fa-user"></i>
+										</span>
+										<span>Login</span>
+									</a>
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</nav>
+		<nav class="navbar is-white">
+			<div class="container">
+				<div class="navbar-menu">
+					<div class="navbar-start">
+						<a class="navbar-item is-active" href="#">Popular</a>
+						<a class="navbar-item" href="#">Recent</a>
+						<a class="navbar-item" href="#">Rising</a>
+					</div>
+					<div class="navbar-end">
+						<div class="navbar-item">
+							<input class="input" type="search" placeholder="Search Revuu-IT.">
+						</div>
+					</div>
+				</div>
+			</div>
+		</nav>
+		<section class="container">
+			<div class="columns">
+				<div class="column is-3">
+					<a class="button is-primary is-block is-alt is-large" href="#">New Revuu!</a>
+					<aside class="menu">
+						<p class="menu-label">
+							Tags
+						</p>
+						<ul class="menu-list">
+                            <li><span class="tag is-primary is-medium ">Restaurant</span></li>
+                            <br>
+                            <li><span class="tag is-link is-medium ">Bar</span></li>
+                            <br>
+                            <li><span class="tag is-light is-danger is-medium ">Accommodation</span></li>
+                            <br>
+                            <li><span class="tag is-dark is-medium ">Rental</span></li>
+                            <br>
+                            <li><span class="tag is-success is-medium ">Point of Interest</span></li>
+                            <br>
+                            <li><span class="tag is-warning is-medium ">Movie</span></li>
+                            <br>
+							<li><span class="tag is-medium ">Theatre</span></li>
+						</ul>
+					</aside>
+                </div>
+				<div class="column is-9">
+					<div class="box content">
+                        {% block content %}
+                        {% endblock %}
+						<article class="post">
+							<h4>Featherblade : Restaurant</h4>
+							<div class="media">
+								<div class="media-left">
+									<p class="image is-128x128">
+										<img src="http://bulma.io/images/placeholders/128x128.png">
+									</p>
+								</div>
+								<div class="media-content">
+									<div class="content">
+										<p>
+                                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+											<a href="#">@jsmith</a> reviewed 34 minutes ago &nbsp;
+											<span class="tag is-primary ">Restaurant</span>
+										</p>
+									</div>
+								</div>
+								<div class="media-right">
+									<span class="has-text-grey-light"><i class="fa fa-star"></i> 1</span>
+								</div>
+							</div>
+						</article>
+						<article class="post">
+							<h4>Grogans Pub</h4>
+							<div class="media">
+								<div class="media-left">
+									<p class="image is-128x128">
+										<img src="http://bulma.io/images/placeholders/128x128.png">
+									</p>
+								</div>
+								<div class="media-content">
+									<div class="content">
+										<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+											<a href="#">@red</a> reviewed 40 minutes ago &nbsp;
+											<span class="tag is-link ">Bar</span>
+										</p>
+									</div>
+								</div>
+								<div class="media-right">
+									<span class="has-text-grey-light"><i class="fa fa-star"></i> 5</span>
+								</div>
+							</div>
+						</article>
+						<article class="post">
+							<h4>Guinness Storehouse</h4>
+							<div class="media">
+								<div class="media-left">
+									<p class="image is-128x128">
+										<img src="http://bulma.io/images/placeholders/128x128.png">
+									</p>
+								</div>
+								<div class="media-content">
+									<div class="content">
+										<p>
+                                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+											<a href="#">@jsmith</a> reviewed 53 minutes ago &nbsp;
+											<span class="tag is-success">Point Of Interest</span>
+										</p>
+									</div>
+								</div>
+								<div class="media-right">
+									<span class="has-text-grey-light"><i class="fa fa-star"></i> 5</span>
+								</div>
+							</div>
+						</article>
+						<article class="post">
+							<h4>Apt 40 One Jervis</h4>
+							<div class="media">
+								<div class="media-left">
+									<p class="image is-128x128">
+										<img src="http://bulma.io/images/placeholders/128x128.png">
+									</p>
+								</div>
+								<div class="media-content">
+									<div class="content">
+										<p>
+                                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+											<a href="#">@brown</a> reviewed 3 hours ago &nbsp;
+											<span class="tag is-dark">Rental</span>
+										</p>
+									</div>
+								</div>
+								<div class="media-right">
+									<span class="has-text-grey-light"><i class="fa fa-star"></i> 3</span>
+								</div>
+							</div>
+						</article>
+						<article class="post">
+							<h4>Marlin Hotel</h4>
+							<div class="media">
+								<div class="media-left">
+									<p class="image is-128x128">
+										<img src="http://bulma.io/images/placeholders/128x128.png">
+									</p>
+								</div>
+								<div class="media-content">
+									<div class="content">
+										<p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                                            <a href="#">@hamburgler</a> reviewed 5 hours ago &nbsp;
+											<span class="tag is-light is-danger">Accommodation</span>
+										</p>
+									</div>
+								</div>
+								<div class="media-right">
+									<span class="has-text-grey-light"><i class="fa fa-star"></i> 2</span>
+								</div>
+							</div>
+						</article>
+
+					</div>
+				</div>
+			</div>
+		</section>
+		<footer class="footer">
+			<div class="container">
+				<div class="content has-text-centered">
+					<div class="columns is-mobile is-centered">
+						<div class="field is-grouped is-grouped-multiline">
+							<div class="control">
+
+							</div>
+							<div class="control">
+								<div class="tags has-addons">
+							
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+		<script async type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}"></script>
+	</body>
+</html>
