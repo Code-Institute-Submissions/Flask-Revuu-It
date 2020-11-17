@@ -1,7 +1,32 @@
 {% extends "base.html" %}
 
-
 {% block content %}
-<h1>Reviews</h1>
+        <h1>Reviews</h1>
+        {% for review in reviews %}
+     
+        <article class="post">
+            <h4>{{ review.review_title }} : {{ review.category_name }} </h4>
+            <div class="media">
+                <div class="media-left">
+                    <p class="image is-128x128">
+                        <img src="http://bulma.io/images/placeholders/128x128.png">
+                    </p>
+                </div>
+                <div class="media-content">
+                    <div class="content">
+                        <p>
+                            {{ review.review_description }}
+                            <a href="#">{{ review.created_by }}</a> reviewed {{ review.timestamp }} minutes ago &nbsp;
+                            <span class="tag is-primary ">Restaurant</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="media-right">
+                    <span class="has-text-grey-light"><i class="fa fa-star"></i>{{ review.star_rating }}</span>
+                </div>
+            </div>
+        </article>
+        {% endfor %}
+
 
 {% endblock %}
