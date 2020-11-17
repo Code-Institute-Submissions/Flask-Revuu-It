@@ -81,8 +81,42 @@ def profile(username):
 	
     if session["user"]:
        return render_template('profile.html', username=username, email=email, readable_dt=readable_dt)
-    #shoul be redirext to login change
-    return redirect(url_for('get_reviews'))
+    #direct to login page if not in session
+    return redirect(url_for('login'))
+
+
+@app.route('/login', methods=["GET", "POST"])
+def login():
+    if request.method == "POST":
+        # check if the user exists in the db
+        existing_user = mongo.db.users.find_one({
+            "username": request.form.get("username").lower()
+        })
+
+        if existing_user:
+            # ensure hashed password matches user input
+            if check_password_hash(
+                existing_user["password"], request.form.get("password")
+            ):
+                # put user in session cookie
+                session["user"] = request.form.get("username").lower() 
+                flash("Welcome, {}".format(request.form.get("username")))
+                return redirect(url_for(
+                    'profile', username=session["user"]
+                ))
+            else:
+                #invalid Password Match
+                flash("Incorrect Username and/or Password")
+                return redirect(url_for("login"))
+        else:
+            #username doesnt exist
+            flash("Incorrect Username and/or Password")
+            return redirect(url_for("login"))
+
+    return render_template("login.html")
+
+
+
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"), port=int(os.environ.get("PORT")), debug=True)
