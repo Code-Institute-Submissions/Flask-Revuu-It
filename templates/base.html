@@ -22,7 +22,7 @@
 		<nav class="navbar is-white topNav">
 			<div class="container">
 				<div class="navbar-brand">
-					<a class="navbar-item" href="../">
+					<a class="navbar-item" href="{{url_for('get_reviews')}}">
 						RevUU-IT
 					</a>
 					<div class="navbar-burger burger" data-target="topNav">
@@ -33,41 +33,48 @@
 				</div>
 				<div id="topNav" class="navbar-menu">
 					<div class="navbar-start">
-                        <a class="navbar-item" href="#">Home</a>
-                        <a class="navbar-item" href="#">Profile</a>
-						<a class="navbar-item" href="#">New Review</a>
-						<a class="navbar-item" href="#">Manage Categories</a>
-						<a class="navbar-item" href="#">Extra</a>
+                        <a class="navbar-item" href="{{url_for('get_reviews')}}">Home</a>
+                        {% if session.user %}
+                            <a class="navbar-item" href="{{url_for('profile', username=session['user'])}}">Profile</a>
+                            <a class="navbar-item" href="#">New Review</a>
+                          {% if session.user == "admin"|lower %}
+						     <a class="navbar-item" href="#">Manage Categories</a>
+                             <a class="navbar-item" href="#">Admin</a>
+                          {% endif %}
+                        {% endif %}
 					</div>
 					<div class="navbar-end">
 						<div class="navbar-item">
 							<div class="field is-grouped">
-								<p class="control">
-									<a href="{{url_for('register')}}" class="button is-small">
-										<span class="icon">
-											<i class="fa fa-user-plus"></i>
-										</span>
-										<span>
-											Register
-										</span>
-									</a>
-								</p>
-								<p class="control">
-									<a href="{{url_for('login')}}"class="button is-small is-info is-outlined">
-										<span class="icon">
-											<i class="fa fa-user"></i>
-										</span>
-										<span>Log in</span>
-									</a>
-                                </p>
+                                {% if session.user %}
                                 <p class="control">
-									<a class="button is-small is-danger is-outlined">
+									<a  href="{{url_for('logout')}}" class="button is-small is-danger is-outlined">
 										<span class="icon">
 											<i class="fa fa-user"></i>
 										</span>
 										<span>Log Out</span>
 									</a>
-								</p>
+                                </p>
+                                {% else %}
+                                    <p class="control">
+                                        <a href="{{url_for('register')}}" class="button is-small">
+                                            <span class="icon">
+                                                <i class="fa fa-user-plus"></i>
+                                            </span>
+                                            <span>
+                                                Register
+                                            </span>
+                                        </a>
+                                    </p>
+                                    <p class="control">
+                                        <a href="{{url_for('login')}}"class="button is-small is-info is-outlined">
+                                            <span class="icon">
+                                                <i class="fa fa-user"></i>
+                                            </span>
+                                            <span>Log in</span>
+                                        </a>
+                                    </p>
+                                {% endif %}
 							</div>
 						</div>
 					</div>
@@ -106,6 +113,7 @@
         <!-- Main Container -->
 		<section class="container">
 			<div class="columns">
+                {% if session.user %}
 				<div class="column is-3">
 					<a class="button is-primary is-block is-alt is-large" href="#">New Revuu!</a>
 					<aside class="menu">
@@ -114,21 +122,16 @@
 						</p>
 						<ul class="menu-list">
                             <li><span class="tag is-primary is-medium ">Restaurant</span></li>
-                            <br>
                             <li><span class="tag is-link is-medium ">Bar</span></li>
-                            <br>
                             <li><span class="tag is-light is-danger is-medium ">Accommodation</span></li>
-                            <br>
                             <li><span class="tag is-dark is-medium ">Rental</span></li>
-                            <br>
                             <li><span class="tag is-success is-medium ">Point of Interest</span></li>
-                            <br>
                             <li><span class="tag is-warning is-medium ">Movie</span></li>
-                            <br>
 							<li><span class="tag is-medium ">Theatre</span></li>
 						</ul>
 					</aside>
                 </div>
+                {% endif %}
 				<div class="column is-9">
 					<div class="box content">
                         {% block content %}
@@ -142,23 +145,34 @@
 				<div class="content has-text-centered">
 					<div class="columns is-mobile is-centered">
 						<div class="field is-grouped is-grouped-multiline">
-							<div class="control">
-                                <a href="{{url_for('register')}}" class="button is-small">
+                            {% if session.user %}
+                                <div class="control">
+                                    <a href="{{url_for('logout')}}" class="button is-small is-danger">
+                                        <span class="icon">
+                                            <i class="fas fa-user"></i>
+                                        </span>
+                                        <span>Logout</span>
+                                    </a>
+                                </div>
+                            {% else %}
+                                <div class="control">
+                                    <a href="{{url_for('register')}}" class="button is-small">
+                                        <span class="icon">
+                                            <i class="fas fa-user-plus"></i>
+                                        </span>
+                                        <span>Register</span>
+                                    </a>
+                                </div>
+                                <div class="control">
+                                    <a href="{{url_for('login')}}" class="button is-small is-info is-outlined">
                                     <span class="icon">
-                                        <i class="fas fa-user-plus"></i>
+                                        <i class="fas fa-user"></i>
                                     </span>
-                                    <span>Register</span>
-                                </a>
-							</div>
-							<div class="control">
-                                <a href="{{url_for('login')}}" class="button is-small is-info is-outlined">
-                                <span class="icon">
-                                    <i class="fas fa-user"></i>
-                                </span>
-                                   <span>Login</span>    
-                                </a>
-								</div>
-							</div>
+                                    <span>Login</span>    
+                                    </a>
+                                    </div>
+                                </div>
+                            {% endif %}
 						</div>
 					</div>
 				</div>
@@ -166,5 +180,7 @@
 		</footer>
         <script async type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}"></script>
         <script defer src="https://use.fontawesome.com/releases/v5.14.0/js/all.js"></script>
-	</body>
+        {% block scripts %}
+        {% endblock %}
+    </body>
 </html>
