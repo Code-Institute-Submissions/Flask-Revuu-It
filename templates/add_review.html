@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+
+{% block content %}
+<form action="{{url_for('add_review')}}" method="POST">
+     <!--Categories Dropdown option -->
+      <div class="field">
+        <label for="category_name" class="label">Category</label>
+        <div class="control">
+          <div class="select">
+            <select id="category_name" name="category_name" required>
+              <option>Select Category</option>
+              {% for category in categories %}
+                <option>{{ category.category_name|upper }}</option>
+              {% endfor %}
+            </select>
+          </div>
+        </div>
+      </div>
+      <!-- Add Title Field-->
+     <div class="field">
+        <label for="review_title" class="label">Title</label>
+        <div class="control">
+          <input class="input" type="text" id="review_title" name="review_title" minlength="5" maxlength="30" placeholder="Enter Title">
+        </div>
+     </div>
+      
+      <div class="field">
+        <label for="image_url" class="label">Image URL</label>
+        <div class="control has-icons-left has-icons-right">
+          <input class="input is-success" type="text" placeholder="Paste Image Hyperlink" id="image_url" name="image_url" value="HTTPS://">
+          <span class="icon is-small is-left">
+            <i class="fas fa-image"></i>
+          </span>
+          <span class="icon is-small is-right">
+            <i class="fas fa-check"></i>
+          </span>
+        </div>
+        <p class="help is-success">This username is available</p>
+      </div>
+          
+      
+      <div class="field">
+        <label for="review_description" class="label">Review Description</label>
+        <div class="control">
+          <textarea id="review_description" name="review_description" class="textarea" minlength="5" maxlength="300" placeholder="Enter a review"></textarea>
+        </div>
+      </div>
+      
+      <div class="field">
+        <div class="control">
+          <label class="checkbox">
+            <input type="checkbox" id="agree_terms" name="agree_terms">
+            I agree to the <a href="#">terms and conditions</a>
+          </label>
+        </div>
+      </div>
+      <div class="field">
+        <div class="control">
+            Star Rating <span class="has-text-warning"><i class="fas fa-star"></i></span>
+
+          <label class="radio">
+            <input type="radio" value="1" name="star_rating">
+            1
+          </label>
+          <label class="radio">
+            <input type="radio" value="2" name="star_rating">
+            2
+          </label>
+          <label class="radio">
+            <input type="radio" value="3" name="star_rating">
+            3
+          </label>
+          <label class="radio">
+            <input type="radio" value="4" name="star_rating">
+            4
+          </label>
+          <label class="radio">
+            <input type="radio" value="5" name="star_rating">
+            5
+          </label>
+        </div>
+      </div>
+      <!-- Submit Review or Cancel -->
+      <div class="field is-grouped">
+        <div class="control">
+          <button class="button is-link">Submit</button>
+        </div>
+        <div class="control">
+          <a href="{{url_for('get_reviews')}}" class="button is-link is-light">Cancel</a>
+        </div>
+      </div>
+
+</form>
+
+{% endblock %}

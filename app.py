@@ -125,6 +125,30 @@ def logout():
     return redirect(url_for("login"))
 
 
+@app.route("/add_review", methods=["GET", "POST"])
+def add_review():
+    
+
+    if request.method == "POST":
+        now = datetime.now()
+
+        review = {
+        "category_name" : request.form.get('category_name').lower(),
+        "review_title" : request.form.get('review_title'),
+        "review_description" : request.form.get('review_description'),
+        "ts" : datetime.timestamp(now),
+        "star_rating": int(request.form.get('star_rating')),
+        "images":{"image_url": request.form.get('image_url')},
+        "created_by": session["user"],
+        "agree_terms": request.form.get('agree_terms')
+        }
+
+        mongo.db.reviews.insert_one(review)
+        flash("Review Added Successfully")
+        return redirect(url_for('get_reviews'))
+
+    categories = mongo.db.categories.find().sort('category_name',1)
+    return render_template("add_review.html", categories=categories)
 
 
 if __name__ == "__main__":

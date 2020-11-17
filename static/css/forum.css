@@ -36,8 +36,8 @@ html,body {
     height: 3rem;
     line-height: 2.8;
   }
-  .media-left img {
-    border-radius: 50%;
+  .card-image img {
+    border-radius: 5%;
   }
   .media-content p {
     font-size: 14px;

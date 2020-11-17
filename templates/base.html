@@ -22,9 +22,12 @@
 		<nav class="navbar is-white topNav">
 			<div class="container">
 				<div class="navbar-brand">
-					<a class="navbar-item" href="{{url_for('get_reviews')}}">
-						RevUU-IT
-					</a>
+                    <strong>
+					 <a class="navbar-item" href="{{url_for('get_reviews')}}">
+                        <span class="has-text-primary icon"><i class="fas fa-check"></i></span> 
+                        <span>RevUU-IT</span>
+                     </a>
+                    </strong>
 					<div class="navbar-burger burger" data-target="topNav">
 						<span></span>
 						<span></span>
@@ -102,7 +105,7 @@
             {% with messages = get_flashed_messages() %}
               {% if messages %}
                 {% for message in messages %}
-                  <div class="notification is-info is-light">
+                  <div class="notification is-warning">
                     <button class="delete"></button>
                       <strong>{{ message }}</strong>
                   </div>
@@ -112,10 +115,10 @@
         </section>
         <!-- Main Container -->
 		<section class="container">
-			<div class="columns">
+			<div class="columns is-mobile is-centered">
                 {% if session.user %}
-				<div class="column is-3">
-					<a class="button is-primary is-block is-alt is-large" href="#">New Revuu!</a>
+				<div class="column is-3">    
+                      <a class="button is-primary is-block is-alt is-large" href="{{url_for('add_review')}}">New RevUU!</a>
 					<aside class="menu">
 						<p class="menu-label">
 							Current Categories
@@ -132,7 +135,7 @@
 					</aside>
                 </div>
                 {% endif %}
-				<div class="column is-9 is-mobile is-centered">
+				<div class="column is-9">
 					<div class="box content">
                         {% block content %}
                         {% endblock %}
