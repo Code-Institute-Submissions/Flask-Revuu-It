@@ -4,22 +4,23 @@
         <h1>Reviews</h1>
         {% for review in reviews %}
      
-        <article class="post">
-            <h4>{{ review.review_title|upper }} : {{ review.category_name|upper }} </h4>
+        <article class="card post">
+            <div class="card-image">
+                <figure class="image is-16by9">
+                  <img src="{{ review.images.image_url }}" alt="Placeholder image">
+                </figure>
+              </div>
+           
             <div class="media">
-                <div class="media-left">
-                    <p class="image is-128x128">
-                        <img src="{{ review.images.image_url }}">
-                    </p>
-                </div>
                 <div class="media-content">
                     <div class="content">
                         <p>
+                            <h4>{{ review.review_title|upper }} : {{ review.category_name|upper }} </h4>
                             {{ review.review_description }}
                         </p> 
                         <p>
                             <a href="#">Reviewed By: {{ review.created_by }}</a>
-                            Created on : {{ review.timestamp }} minutes ago &nbsp;
+                            Created on : {{ readable_dt }} minutes ago &nbsp;
                             {% if review.category_name == "poi" %}
                               <span class="tag is-success">{{review.category_name|upper}}</span>
                             {% elif review.category_name == "restaurant"  %}

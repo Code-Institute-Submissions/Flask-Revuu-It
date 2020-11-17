@@ -23,6 +23,7 @@ mongo = PyMongo(app)
 def get_reviews():
     reviews = list(mongo.db.reviews.find())
     
+    
     return render_template("reviews.html", reviews=reviews)
 
 
