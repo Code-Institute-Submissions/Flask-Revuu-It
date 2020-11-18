@@ -20,7 +20,7 @@
                         </p> 
                         <p>
                             <a href="#">Reviewed By: {{ review.created_by }}</a>
-                            Created on : {{ readable_dt }} minutes ago &nbsp;
+                            Created on : {{review.ts|ctime}}  &nbsp;
                             {% if review.category_name == "poi" %}
                               <span class="tag is-success">{{review.category_name|upper}}</span>
                             {% elif review.category_name == "restaurant"  %}
@@ -37,7 +37,7 @@
                     </div>
                 </div>
                 <div class="media-right">
-                    <span class="has-text-grey-light"><i class="fa fa-star has-text-warning"></i>{{ review.star_rating }}</span>
+                    <span class="has-text-grey-light rating-text"><i class="fa fa-star has-text-warning"></i>{{ review.star_rating }}</span>
                 </div>
             </div>
         </article>

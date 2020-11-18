@@ -1,6 +1,14 @@
 
 article {
-    padding: 10px;
-    margin: 5px;
+    margin: 0.2rem;
     background-color: #fafafa;
 }
+
+.box .content{
+    padding: 0.2rem;
+}
+
+.rating-text {
+    font-size: 2em;
+}
+

@@ -3,6 +3,7 @@ from flask import Flask, render_template, flash, redirect, request, session, url
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from datetime import datetime
+import time
 from werkzeug.security import generate_password_hash, check_password_hash
 
 if os.path.exists("env.py"):
@@ -21,10 +22,16 @@ mongo = PyMongo(app)
 @app.route("/")
 @app.route("/get_reviews")
 def get_reviews():
-    reviews = list(mongo.db.reviews.find())
-    
+    reviews = mongo.db.reviews.find()
     
     return render_template("reviews.html", reviews=reviews)
+
+
+# custom template filter for timestamp
+@app.template_filter('ctime')
+def timectime(s):
+    return time.ctime(s) # datetime.datetime.fromtimestamp(s)
+
 
 
 @app.route("/register", methods=["GET","POST"])

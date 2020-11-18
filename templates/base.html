@@ -38,8 +38,8 @@
 					<div class="navbar-start">
                         <a class="navbar-item" href="{{url_for('get_reviews')}}">Home</a>
                         {% if session.user %}
-                            <a class="navbar-item" href="{{url_for('profile', username=session['user'])}}">Profile</a>
-                            <a class="navbar-item" href="#">New Review</a>
+                            <a class="navbar-item" href="{{url_for('profile', username=session['user'])}}">My Profile</a>
+                            <a class="navbar-item" href="{{url_for('add_review')}}">New Review</a>
                           {% if session.user == "admin"|lower %}
 						     <a class="navbar-item" href="#">Manage Categories</a>
                              <a class="navbar-item" href="#">Admin</a>
@@ -86,7 +86,7 @@
 		</nav>
 		<nav class="navbar is-white">
 			<div class="container">
-				<div class="navbar-menu">
+				<div class="navbar-menu is-hidden-mobile">
 					<div class="navbar-start">
 						<a class="navbar-item is-active" href="#">Popular</a>
 						<a class="navbar-item" href="#">Recent</a>
@@ -115,9 +115,9 @@
         </section>
         <!-- Main Container -->
 		<section class="container">
-			<div class="columns is-mobile is-centered">
+			<div class="columns  is-centered">
                 {% if session.user %}
-				<div class="column is-3">    
+				<div class="column is-2 is-hidden-mobile">    
                       <a class="button is-primary is-block is-alt is-large" href="{{url_for('add_review')}}">New RevUU!</a>
 					<aside class="menu">
 						<p class="menu-label">
@@ -135,7 +135,7 @@
 					</aside>
                 </div>
                 {% endif %}
-				<div class="column is-9">
+				<div class="column is-10">
 					<div class="box content">
                         {% block content %}
                         {% endblock %}

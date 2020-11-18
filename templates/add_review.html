@@ -4,30 +4,33 @@
 <form action="{{url_for('add_review')}}" method="POST">
      <!--Categories Dropdown option -->
       <div class="field">
-        <label for="category_name" class="label">Category</label>
-        <div class="control">
-          <div class="select">
+        <label for="category_name" class="label">Select Category</label>
+        <div class="control has-icons-left">
+          <div class="select is-medium">
             <select id="category_name" name="category_name" required>
-              <option>Select Category</option>
+              <option disabled>Select Category</option>
               {% for category in categories %}
                 <option>{{ category.category_name|upper }}</option>
               {% endfor %}
             </select>
           </div>
+          <span class="icon is-medium is-left">
+            <i class="fas fa-globe"></i>
+          </span>
         </div>
       </div>
       <!-- Add Title Field-->
      <div class="field">
         <label for="review_title" class="label">Title</label>
         <div class="control">
-          <input class="input" type="text" id="review_title" name="review_title" minlength="5" maxlength="30" placeholder="Enter Title">
+          <input class="input" type="text" id="review_title" name="review_title" minlength="5" maxlength="30" placeholder="Enter Title" required>
         </div>
      </div>
       
       <div class="field">
         <label for="image_url" class="label">Image URL</label>
         <div class="control has-icons-left has-icons-right">
-          <input class="input is-success" type="text" placeholder="Paste Image Hyperlink" id="image_url" name="image_url" value="HTTPS://">
+          <input class="input is-success" type="text" placeholder="Paste Image Hyperlink https://" id="image_url" name="image_url"  required>
           <span class="icon is-small is-left">
             <i class="fas fa-image"></i>
           </span>
@@ -35,27 +38,27 @@
             <i class="fas fa-check"></i>
           </span>
         </div>
-        <p class="help is-success">This username is available</p>
+        <p class="help is-success">Enter a Valid URL</p>
       </div>
           
       
       <div class="field">
         <label for="review_description" class="label">Review Description</label>
         <div class="control">
-          <textarea id="review_description" name="review_description" class="textarea" minlength="5" maxlength="300" placeholder="Enter a review"></textarea>
+          <textarea id="review_description" name="review_description" class="textarea" minlength="5" maxlength="300" placeholder="Enter a review" required></textarea>
         </div>
       </div>
-      
+
       <div class="field">
         <div class="control">
           <label class="checkbox">
-            <input type="checkbox" id="agree_terms" name="agree_terms">
-            I agree to the <a href="#">terms and conditions</a>
+            <input type="checkbox" id="agree_terms" name="agree_terms" required>
+            I agree to the <a href="{{url_for('get_reviews')}}">terms and conditions</a>
           </label>
         </div>
       </div>
       <div class="field">
-        <div class="control">
+        <div class="control" required>
             Star Rating <span class="has-text-warning"><i class="fas fa-star"></i></span>
 
           <label class="radio">
@@ -75,7 +78,7 @@
             4
           </label>
           <label class="radio">
-            <input type="radio" value="5" name="star_rating">
+            <input type="radio" value="5" name="star_rating" checked>
             5
           </label>
         </div>
