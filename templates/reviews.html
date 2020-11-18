@@ -15,24 +15,25 @@
                 <div class="media-content">
                     <div class="content">
                         <p>
-                            <h4>{{ review.review_title|upper }} : {{ review.category_name|upper }} </h4>
+                            <h4>{{ review.review_title|upper }}:
+                                {% if review.category_name == "poi" %}
+                                <span class="tag is-success is-large">{{review.category_name|upper}}</span>
+                              {% elif review.category_name == "restaurant"  %}
+                                 <span class="tag is-primary is-large">{{review.category_name|upper}}</span>
+                              {% elif review.category_name == "accommodation"  %}
+                                 <span class="tag is-danger is-light is-large">{{review.category_name|upper}}</span>
+                              {% elif review.category_name == "movie"  %}
+                                 <span class="tag is-warning is-large">{{review.category_name|upper}}</span>
+                              {% elif review.category_name == "bar"  %}
+                                 <span class="tag is-info is-large">{{review.category_name|upper}}</span>
+                              {% else %}
+                                 <span class="tag is-success is-large">{{review.category_name|upper}}</span>
+                              {% endif %} </h4>
                             {{ review.review_description }}
                         </p> 
                         <p>
                             <a href="#">Reviewed By: {{ review.created_by }}</a>
                             Created on : {{review.ts|ctime}}  &nbsp;
-                            {% if review.category_name == "poi" %}
-                              <span class="tag is-success">{{review.category_name|upper}}</span>
-                            {% elif review.category_name == "restaurant"  %}
-                               <span class="tag is-primary">{{review.category_name|upper}}</span>
-                            {% elif review.category_name == "accommodation"  %}
-                               <span class="tag is-danger is-light">{{review.category_name|upper}}</span>
-                            {% elif review.category_name == "movie"  %}
-                               <span class="tag is-warning">{{review.category_name|upper}}</span>
-                            {% else %}
-                               <span class="tag is-success">{{review.category_name|upper}}
-                            </span>
-                            {% endif %} 
                         </p>
                     </div>
                 </div>
