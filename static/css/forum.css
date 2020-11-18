@@ -37,7 +37,7 @@ html,body {
     line-height: 2.8;
   }
   .card-image img {
-    border-radius: 5%;
+    border-radius: 4%;
   }
   .media-content p {
     font-size: 14px;
@@ -47,8 +47,8 @@ html,body {
     padding: 0.3rem;
   }
   article.post {
-    margin: 0.2rem;
-    padding: 1rem;
+    margin: 0.5rem;
+    padding: 0.5rem;
     border-bottom: 1px solid #E6EAEE;
   }
   article.post:last-child {
