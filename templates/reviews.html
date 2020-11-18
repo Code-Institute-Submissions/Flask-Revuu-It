@@ -3,8 +3,7 @@
 
 
 {% block content %}
-
-        <h1>Reviews</h1>
+        
         {% for review in reviews %}
      
         <article class="card post">
@@ -32,6 +31,8 @@
                               {% else %}
                                  <span class="tag is-success is-large">{{review.category_name|upper}}</span>
                               {% endif %} </h4>
+                              <span class="has-text-grey-light rating-text"><i class="fa fa-star has-text-warning"></i>{{ review.star_rating }}</span>
+
                             {{ review.review_description }}
                         </p> 
                         <p>
@@ -53,9 +54,6 @@
                           </div>
                           {% endif %}
                     </div>
-                </div>
-                <div class="media-right">
-                    <span class="has-text-grey-light rating-text"><i class="fa fa-star has-text-warning"></i>{{ review.star_rating }}</span>
                 </div>
             </div>
         </article>

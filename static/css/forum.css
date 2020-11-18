@@ -44,12 +44,12 @@ html,body {
     line-height: 2.3;
     font-weight: 700;
     color: #8F99A3;
-    padding: 0.3rem;
+    padding: 0.1rem;
   }
   article.post {
     margin: 0.5rem;
     padding: 0.5rem;
-    border-bottom: 1px solid #E6EAEE;
+    border-bottom: 2px solid #E6EAEE;
   }
   article.post:last-child {
     padding-bottom: 0;
