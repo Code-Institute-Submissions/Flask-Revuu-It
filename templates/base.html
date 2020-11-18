@@ -88,13 +88,12 @@
 			<div class="container">
 				<div class="navbar-menu is-hidden-mobile">
 					<div class="navbar-start">
-						<a class="navbar-item is-active" href="#">Popular</a>
-						<a class="navbar-item" href="#">Recent</a>
-						<a class="navbar-item" href="#">Rising</a>
+						<a class="navbar-item is-active" href="{{url_for('popular')}}">Popular</a>
+						<a class="navbar-item" href="{{url_for('recent')}}">Recent</a>
 					</div>
 					<div class="navbar-end">
 						<div class="navbar-item">
-							<input class="input" type="search" placeholder="Search Revuu-IT.">
+							<a class="navbar-item" href="{{url_for('recent')}}">Newsletter Sign-Up</a>
 						</div>
 					</div>
 				</div>
@@ -117,23 +116,8 @@
 		<section class="container">
 			<div class="columns  is-centered">
                 {% if session.user %}
-				<div class="column is-2 is-hidden-mobile">    
-                      <a class="button is-primary is-block is-alt is-large" href="{{url_for('add_review')}}">New RevUU!</a>
-					<aside class="menu">
-						<p class="menu-label">
-							Current Categories
-						</p>
-						<ul class="menu-list">
-                            <li><span class="tag is-primary is-medium ">Restaurant</span></li>
-                            <li><span class="tag is-link is-medium ">Bar</span></li>
-                            <li><span class="tag is-light is-danger is-medium ">Accommodation</span></li>
-                            <li><span class="tag is-dark is-medium ">Rental</span></li>
-                            <li><span class="tag is-success is-medium ">Point of Interest</span></li>
-                            <li><span class="tag is-warning is-medium ">Movie</span></li>
-							<li><span class="tag is-medium ">Theatre</span></li>
-						</ul>
-					</aside>
-                </div>
+                    {% block menutags %}
+                    {% endblock %}
                 {% endif %}
 				<div class="column is-10">
 					<div class="box content">

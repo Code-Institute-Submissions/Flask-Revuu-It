@@ -23,8 +23,9 @@ mongo = PyMongo(app)
 @app.route("/get_reviews")
 def get_reviews():
     reviews = mongo.db.reviews.find()
+    categories = mongo.db.categories.find()
     
-    return render_template("reviews.html", reviews=reviews)
+    return render_template("reviews.html", reviews=reviews, categories=categories)
 
 
 # custom template filter for timestamp
@@ -156,6 +157,53 @@ def add_review():
 
     categories = mongo.db.categories.find().sort('category_name',1)
     return render_template("add_review.html", categories=categories)
+
+
+@app.route("/popular")
+def popular():
+    popular_reviews = mongo.db.reviews.find(
+        {"star_rating":{"$gt":4}}
+    )
+    categories = mongo.db.categories.find()
+    return render_template('popular.html', reviews=popular_reviews,categories=categories)
+
+
+@app.route("/recent")
+def recent():
+    latest_reviews = mongo.db.reviews.find().sort("_id",-1).limit(50);
+    categories = mongo.db.categories.find()
+    return render_template('recent.html', reviews=latest_reviews, categories=categories)
+
+
+@app.route("/edit_review/<review_id>", methods=["GET", "POST"])
+def edit_review(review_id):
+    if request.method == "POST":
+        now = datetime.now()
+        submit = {
+            "category_name" : request.form.get("category_name").lower(),
+            "review_title": request.form.get("review_title"),
+            "review_description": request.form.get("review_description"),
+            "ts" : datetime.timestamp(now),
+            "star_rating": int(request.form.get("star_rating")),
+            "images": {"image_url": request.form.get("image_url")},
+            "created_by": session["user"],
+            "agree_terms": request.form.get("agree_terms"),
+        }
+        mongo.db.reviews.update({"_id":ObjectId(review_id)}, submit)
+        flash("Review Successfully Updated")
+    
+    review = mongo.db.reviews.find_one({"_id": ObjectId(review_id)})
+    categories = mongo.db.categories.find().sort('category_name', 1)
+    return render_template("edit_review.html", review=review, categories=categories)
+
+
+@app.route("/delete_review/<review_id>")
+def delete_review(review_id):
+    mongo.db.reviews.remove({"_id":ObjectId(review_id)})
+    flash("Review Successfully Deleted")
+    return redirect(url_for("get_reviews"))
+
+
 
 
 if __name__ == "__main__":

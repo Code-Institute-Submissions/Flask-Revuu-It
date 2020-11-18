@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h3>Edit Review</h3>
+
+<!-- Add Edit Form -->
+<form action="{{url_for('edit_review', review_id=review._id)}}" method="POST">
+    <!--Categories Dropdown option -->
+     <div class="field">
+       <label for="category_name" class="label">Select Category</label>
+       <div class="control has-icons-left">
+         <div class="select is-medium">
+           <select id="category_name" name="category_name" required>
+             <option disabled>Select Category</option>
+             {% for category in categories %}
+               {% if category.category_name == review.category_name %}
+                  <option value="{{ category.category_name|upper }}" selected></option>
+               {% else %}
+                  <option>{{ category.category_name|upper }}</option>
+               {% endif %}
+             {% endfor %}
+           </select>
+         </div>
+         <span class="icon is-medium is-left">
+           <i class="fas fa-list-alt"></i>
+         </span>
+       </div>
+     </div>
+     <!-- Add Title Field-->
+    <div class="field">
+       <label for="review_title" class="label">Title</label>
+       <div class="control">
+         <input value="{{ review.review_title }}" class="input" type="text" id="review_title" name="review_title" minlength="5" maxlength="50" placeholder="Enter Title" required>
+       </div>
+    </div>
+     <!-- Add Image URL field -->
+     <div class="field">
+       <label for="image_url" class="label">Image URL</label>
+       <div class="control has-icons-left has-icons-right">
+         <input value="{{ review.images.image_url }}" class="input is-success" type="text" placeholder="Paste Image Hyperlink https://" id="image_url" name="image_url"  required>
+         <span class="icon is-small is-left">
+           <i class="fas fa-image"></i>
+         </span>
+         <span class="icon is-small is-right">
+           <i class="fas fa-check"></i>
+         </span>
+       </div>
+       <p class="help is-success">Enter a Valid URL</p>
+     </div>
+         
+     
+     <div class="field">
+       <label for="review_description" class="label">Review Description</label>
+       <div class="control">
+         <textarea  id="review_description" name="review_description" class="textarea" minlength="5" maxlength="1000" placeholder="Enter a review" required>
+             {{- review.review_description -}}
+         </textarea>
+       </div>
+     </div>
+     <!-- Terms and conditions Checkbox -->
+     <div class="field">
+       <div class="control">
+         <label class="checkbox">
+           <input type="checkbox" id="agree_terms" name="agree_terms" required>
+           I agree to the <a href="{{url_for('get_reviews')}}">terms and conditions</a>
+         </label>
+       </div>
+     </div>
+     <div class="field">
+       <div class="control" required>
+           Star Rating <span class="has-text-warning"><i class="fas fa-star"></i></span>
+        {% for i in range(1,5) %}
+           {% if i == review.star_rating %}
+           <label class="radio">
+            <input type="radio" value={{i}} name="star_rating" checked>
+           {{i}}
+           </label>
+           {% else %}
+           <label class="radio">
+            <input type="radio" value={{i}} name="star_rating">
+           {{i}}
+         </label>
+         {% endif %}
+        {% endfor %}
+       </div>
+     </div>
+     <!-- Submit Review or Cancel -->
+     <div class="field is-grouped">
+       <div class="control">
+         <button class="button is-link"><i class="fas fa-edit"></i> Edit Review</button>
+       </div>
+       <div class="control">
+         <a href="{{url_for('get_reviews')}}" class="button is-link is-light"><i class="fas fa-times-circle"></i>Cancel</a>
+       </div>
+     </div>
+
+</form>
+
+{% endblock%}
