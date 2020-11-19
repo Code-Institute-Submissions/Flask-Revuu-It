@@ -11,12 +11,12 @@
        <div class="control has-icons-left">
          <div class="select is-medium">
            <select id="category_name" name="category_name" required>
-             <option disabled>Select Category</option>
+             <option value="" disabled>Select Category</option>
              {% for category in categories %}
-               {% if category.category_name == review.category_name %}
-                  <option value="{{ category.category_name|upper }}" selected></option>
+               {% if category.category_name|lower == review.category_name|lower %}
+                  <option value="{{ category.category_name|upper }}" selected>{{ category.category_name|upper }}</option>
                {% else %}
-                  <option>{{ category.category_name|upper }}</option>
+                  <option  value="{{ category.category_name|upper }}">{{ category.category_name|upper }}</option>
                {% endif %}
              {% endfor %}
            </select>
@@ -90,7 +90,7 @@
          <button class="button is-link"><i class="fas fa-edit"></i> Edit Review</button>
        </div>
        <div class="control">
-         <a href="{{url_for('get_reviews')}}" class="button is-link is-light"><i class="fas fa-times-circle"></i>Cancel</a>
+         <a onclick="myConfirm()" href="{{url_for('get_reviews')}}" class="button is-link is-light"><i class="fas fa-times-circle"></i>Cancel</a>
        </div>
      </div>
 

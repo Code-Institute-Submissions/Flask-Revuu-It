@@ -29,3 +29,18 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
   });
+
+  function myConfirm() {
+   
+    if (confirm('Are you sure you want to Delete?')) {
+        // Save it!
+       
+
+        return localStorage.setItem('myConfirm', 'Yes');
+        console.log('Thing was saved to the database.');
+      } else {
+        return localStorage.setItem('myConfirm', 'No');
+        // Do nothing!
+        console.log('Thing was not saved to the database.');
+      }
+  }
