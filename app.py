@@ -199,15 +199,44 @@ def edit_review(review_id):
 
 @app.route("/delete_review/<review_id>")
 def delete_review(review_id):
-    if sessionStorage["deleteConfirm"] == "yes":
         mongo.db.reviews.remove({"_id":ObjectId(review_id)})
         flash("Review Successfully Deleted")
         return redirect(url_for("get_reviews"))
-    else:
-        return False
+  
  
 
 
+@app.route("/get_categories")
+def get_categories():
+    categories = mongo.db.categories.find().sort('category_name',1)
+    return render_template("categories.html", categories=categories )
+
+
+@app.route("/add_category", methods=["GET", "POST"])
+def add_category():
+    tag_styles = {
+        "Blue": "is-info",
+        "Black": "is-black",
+        "Dark": "is-dark",
+        "Light": "is-light",
+        "White": "is-white",
+        "Primary": "is-primary",
+        "Link": "is-link",
+        "Success": "is-success",
+        "Yellow": "is-warning",
+        "Red": "is-danger",
+    }
+
+    if request.method == "POST":
+        category =  {
+            "category_name": request.form.get("category_name"),
+            "tag_style": request.form.get("tag_style")
+        }
+        mongo.db.categories.insert_one(category)
+        flash("New Category Added")
+        return redirect(url_for('get_categories'))
+
+    return render_template("add_category.html", tag_styles=tag_styles)
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"), port=int(os.environ.get("PORT")), debug=True)

@@ -43,7 +43,7 @@
                             <a class="navbar-item" href="{{url_for('profile', username=session['user'])}}">My Profile</a>
                             <a class="navbar-item" href="{{url_for('add_review')}}">New Review</a>
                           {% if session.user == "admin"|lower %}
-						     <a class="navbar-item" href="#">Manage Categories</a>
+						     <a class="navbar-item" href="{{url_for('get_categories')}}">Manage Categories</a>
                              <a class="navbar-item" href="#">Admin</a>
                           {% endif %}
                         {% endif %}
@@ -101,7 +101,7 @@
             {% endwith %}
         </section>
         <!-- Main Container -->
-		<section class="container">
+		<section class="container is-fluid">
 			<div class="columns  is-centered">
                 {% if session.user %}
                     {% block menutags %}
@@ -155,10 +155,6 @@
 		</footer>
         <script type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}"></script>
         <script defer src="https://use.fontawesome.com/releases/v5.14.0/js/all.js"></script>
-        <script src="https://cdn.ckeditor.com/4.15.1/standard/ckeditor.js"></script>
-        <script>
-            CKEDITOR.replace( 'review_description' );
-        </script>
         {% block scripts %}
         {% endblock %}
     </body>

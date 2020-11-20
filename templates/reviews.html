@@ -5,19 +5,17 @@
 {% block content %}
         
         {% for review in reviews %}
-     
-        <article class="card post">
-            <div class="card-image">
-                <figure class="image is-5by3">
-                  <img src="{{ review.images.image_url }}" alt="Placeholder image">
-                </figure>
-              </div>
-           
-            <div class="media">
+           <div class="container adjust">
+            <article class="media post is-centered">
+                <figure class="media-left">
+                    <p class="image is-96x96 is-rounded">
+                      <img src="{{ review.images.image_url }}" alt="review-image">
+                    </p>
+                  </figure>
                 <div class="media-content">
                     <div class="content">
                         <p>
-                            <h4>{{ review.review_title|upper }}:
+                            <strong>{{ review.review_title|upper }}:
                                 {% if review.category_name == "poi" %}
                                 <span class="tag is-success is-large">{{review.category_name|upper}}</span>
                               {% elif review.category_name == "restaurant"  %}
@@ -36,33 +34,49 @@
                                 <span class="has-text-grey-light rating-text"><i class="fa fa-star has-text-warning"></i></span> 
                               {% endfor %}
                               <span>{{ review.star_rating }}</span> 
-                            </h4>
-                        </p> 
-                        <p>
+                            </strong>
+                            <br>
                         {{ review.review_description|safe }}
+                        <br>
+                        <small>Reviewed By: {{ review.created_by }} &nbsp;</small>
+                        <small>Updated : {{review.ts|ctime}}  &nbsp;</small>
                         </p>
-                        <p>
-                            Reviewed By: {{ review.created_by }} &nbsp;
-                            Updated : {{review.ts|ctime}}  &nbsp;
-                        </p>
+                            
+                       
                         {% if session.user|lower == review.created_by|lower %}
-                        <div class="field is-grouped">
+                        <div class="field">
                             <p class="control">
                               <a href="{{ url_for('edit_review', review_id=review._id) }}" class="button is-link">
                                 Edit Review
                               </a>
                             </p>
-                            <p class="control">
-                              <a onclick="myConfirm()" href="{{ url_for('delete_review', review_id=review._id) }}" class="button is-danger">
-                                Delete Review
-                              </a>
-                            </p>
                           </div>
-                          {% endif %}
+                        {% endif %}
                     </div>
+                    <nav class="level is-mobile"> 
+                        <div class="level-left"> 
+                          <a class="level-item"> 
+                            <span class="icon is-small"> 
+                              <i class="fas fa-reply"></i></span> 
+                          </a> 
+                          <a class="level-item"> 
+                            <span class="icon is-small"> 
+                               <i class="fas fa-retweet"></i></span> 
+                          </a> 
+                          <a class="level-item"> 
+                            <span class="icon is-small"> 
+                              <i class="fas fa-heart"></i></span> 
+                          </a> 
+                        </div> 
+                      </nav> 
                 </div>
-            </div>
-        </article>
+                {% if session.user|lower == review.created_by|lower %}
+                  <div class="media-right"> 
+                    <a onclick="window.confirm('Are You Sure?')" href="{{ url_for('delete_review', review_id=review._id) }}" class=" button delete is-danger"></a> 
+                  </div> 
+                {% endif %}
+            </article>
+        </div>
         {% endfor %}
 
 

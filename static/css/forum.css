@@ -36,9 +36,12 @@ html,body {
     height: 3rem;
     line-height: 2.8;
   }
-  .card-image img {
-    border-radius: 4%;
+
+  .media-left img {
+    border-radius: 5%;
   }
+  
+
   .media-content p {
     font-size: 14px;
     line-height: 2.3;
@@ -46,10 +49,11 @@ html,body {
     color: #8F99A3;
     padding: 0.1rem;
   }
+
   article.post {
-    margin: 0.5rem;
-    padding: 0.5rem;
-    border-bottom: 2px solid #E6EAEE;
+    margin: 1rem;
+    padding: 1rem;
+    border-bottom: 1px solid #E6EAEE;
   }
   article.post:last-child {
     padding-bottom: 0;

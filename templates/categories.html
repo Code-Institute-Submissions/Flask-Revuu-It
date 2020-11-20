@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block styles %}
+  <link rel="stylesheet" href="{{ url_for('static',filename='css/kanban.css') }}" type="text/css" >
+{% endblock %}
+
+{% block content %}
+
+<div class="column is-12 is-centered">    
+    <a class="button is-success is-block is-alt is-large" href="{{url_for('add_category')}}">Add Category</a>
+<section class="menu">
+    <p class="menu-label">
+        <i class="fas fa-list-alt"></i> Current Categories
+        
+    </p>
+</section>
+</div>
+
+
+<section class="container">
+    <div class="level-item">
+        <div class="columns is-multiline is-centered cards-container" id="sectioncontainer"> 
+           
+            <div class="column is-narrow">
+            <article class="message is-black">
+                <div class="message-header">
+                    <p><i class="fas fa-list-alt"></i> Edit/Delete Category</p>
+                </div>
+                <div class="message-body">
+                    
+                    <div class="board-item">
+                        <div class="board-item-content">
+                            <table class="table  is-bordered is-striped is-hoverable is-fullwidth">
+                                <thead></thead>
+                                  <tr><th>Category</th><th>Control</th></tr>
+                                </thead>
+                                <tbody>
+                                    {% for category in categories %}
+                                    <tr>
+                                        <td><span class="tag {{category.tag_style}} is-medium">{{ category.category_name }}</span></td>
+                                        <td><div class="field is-grouped is-grouped-multiline">
+                                            <div class="control"><a href="#" class="tag is-link is-medium">Edit Category</a></div>
+                                            <div class="control"><span class="tag is-danger is-medium">Delete</span></div>
+                                        </div>
+                                        </td>
+                                   </tr>
+                                   {% endfor %}
+                                </tbody>
+                           </table>
+                        </div>
+                    </div>
+                
+                </div>
+            </article>
+            </div>
+            
+         </div>
+           
+        </div>
+</section>
+
+
+{% endblock %}

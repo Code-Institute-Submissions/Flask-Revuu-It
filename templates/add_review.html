@@ -22,8 +22,11 @@
       <!-- Add Title Field-->
      <div class="field">
         <label for="review_title" class="label">Title</label>
-        <div class="control">
+        <div class="control has-icons-left">
           <input class="input" type="text" id="review_title" name="review_title" minlength="5" maxlength="50" placeholder="Enter Title" required>
+          <span class="icon is-small is-left">
+            <i class="fas fa-pencil-alt"></i>
+          </span>
         </div>
      </div>
       
@@ -95,4 +98,11 @@
 
 </form>
 
+{% endblock %}
+
+{% block scripts %}
+    <script src="https://cdn.ckeditor.com/4.15.1/standard/ckeditor.js"></script>
+    <script>
+        CKEDITOR.replace( 'review_description' );
+    </script>
 {% endblock %}
