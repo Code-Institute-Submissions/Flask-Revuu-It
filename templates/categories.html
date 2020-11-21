@@ -38,7 +38,7 @@
                                     <tr>
                                         <td><span class="tag {{category.tag_style}} is-medium">{{ category.category_name }}</span></td>
                                         <td><div class="field is-grouped is-grouped-multiline">
-                                            <div class="control"><a href="#" class="tag is-link is-medium">Edit Category</a></div>
+                                            <div class="control"><a href="{{url_for('edit_category', category_id=category._id)}}" class="tag is-link is-medium">Edit Category</a></div>
                                             <div class="control"><span class="tag is-danger is-medium">Delete</span></div>
                                         </div>
                                         </td>

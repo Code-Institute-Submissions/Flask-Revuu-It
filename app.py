@@ -3,6 +3,7 @@ from flask import Flask, render_template, flash, redirect, request, session, url
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from datetime import datetime
+from flask_mail import Mail, Message
 import time
 from werkzeug.security import generate_password_hash, check_password_hash
 
@@ -12,9 +13,19 @@ if os.path.exists("env.py"):
 
 app = Flask(__name__)
 
+mail= Mail(app)
+
 app.config['MONGO_DBNAME'] = os.environ.get("MONGODB_NAME")
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.secret_key = os.environ.get("SECRET_KEY")
+
+app.config['MAIL_SERVER']='smtp.gmail.com'
+app.config['MAIL_PORT'] = 465
+app.config['MAIL_USERNAME'] = 'info@dublin-360.com'
+app.config['MAIL_PASSWORD'] = 'Hoo1xaru1!'
+app.config['MAIL_USE_TLS'] = False
+app.config['MAIL_USE_SSL'] = True
+mail = Mail(app)
 
 mongo = PyMongo(app)
 
@@ -191,6 +202,7 @@ def edit_review(review_id):
         }
         mongo.db.reviews.update({"_id":ObjectId(review_id)}, submit)
         flash("Review Successfully Updated")
+        return redirect(url_for("get_reviews"))
     
     review = mongo.db.reviews.find_one({"_id": ObjectId(review_id)})
     categories = mongo.db.categories.find().sort('category_name', 1)
@@ -229,14 +241,79 @@ def add_category():
 
     if request.method == "POST":
         category =  {
-            "category_name": request.form.get("category_name"),
-            "tag_style": request.form.get("tag_style")
+            "category_name": request.form.get("category_name").lower(),
+            "tag_style": request.form.get("tag_style").lower()
         }
         mongo.db.categories.insert_one(category)
         flash("New Category Added")
         return redirect(url_for('get_categories'))
 
     return render_template("add_category.html", tag_styles=tag_styles)
+
+
+@app.route("/edit_category/<category_id>", methods=["GET", "POST"])
+def edit_category(category_id):
+    tag_styles = {
+        "Blue": "is-info",
+        "Black": "is-black",
+        "Dark": "is-dark",
+        "Light": "is-light",
+        "White": "is-white",
+        "Primary": "is-primary",
+        "Link": "is-link",
+        "Success": "is-success",
+        "Yellow": "is-warning",
+        "Red": "is-danger",
+    }
+
+    if request.method == "POST":
+        submit = {
+            "category_name": request.form.get("category_name"),
+            "tag_style": request.form.get("tag_style").lower()
+        }
+        mongo.db.categories.update({"_id": ObjectId(category_id)}, submit )
+        flash("Category Successfully Updated")
+        return redirect(url_for("get_categories"))
+
+    category = mongo.db.categories.find_one({"_id": ObjectId(category_id)})
+    return render_template('edit_category.html', category=category, tag_styles=tag_styles)
+
+
+@app.route("/newsletter", methods=["GET", "POST"])
+def newsletter():
+        # check if session user exists
+    try:
+        if session["user"]:
+            created_by = session["user"]
+            user_email = mongo.db.users.find_one({"username":created_by})["email"]
+    except:
+            created_by = "Not Registered"
+            user_email = ""
+  
+    
+    
+    if request.method == "POST":
+        submit = {
+                "first_name": request.form.get("first_name").lower(),
+                "last_name": request.form.get("last_name").lower(),
+                "newsletter_email": request.form.get("newsletter_email").lower(),
+                "newsletter_terms": request.form.get("newsletter_terms"),
+                "registered": request.form.get("registered"),
+                "created_by": created_by
+            }
+
+        mongo.db.newsletter.insert_one(submit)
+        flash("Newsletter Signup Successful")
+        # Send Email to registered Email
+        send_to = request.form.get('newsletter_email')
+        msg = Message('Hello', sender = 'info@dublin-360.com', recipients = [send_to])
+        msg.body = "Hello {} {} ,Thank you for registering to Revvuu-IT".format(request.form.get('first_name'),request.form.get('last_name'))
+        mail.send(msg)
+        flash("Mail Sent to {}".format( request.form.get('newsletter_email') ))
+        
+
+    return render_template('newsletter.html', user_email=user_email)
+
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"), port=int(os.environ.get("PORT")), debug=True)
