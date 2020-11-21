@@ -7,13 +7,20 @@
         {% for review in reviews %}
            <div class="container adjust">
             <article class="media post is-centered">
+                <!--
                 <figure class="media-left">
-                    <p class="image is-96x96 is-rounded">
+                    <p class="image is-32x32">
                       <img src="{{ review.images.image_url }}" alt="review-image">
                     </p>
                   </figure>
+                  -->
                 <div class="media-content">
                     <div class="content">
+                        <figure>
+                          
+                              <img class="cropped" src="{{ review.images.image_url }}" alt="review-image">
+                    
+                          </figure>
                         <p>
                             <strong>{{ review.review_title|upper }}:
                                 {% if review.category_name == "poi" %}
@@ -33,16 +40,13 @@
                               {% for i in range(1,review.star_rating+1) %}
                                 <span class="has-text-grey-light rating-text"><i class="fa fa-star has-text-warning"></i></span> 
                               {% endfor %}
-                              <span>{{ review.star_rating }}</span> 
                             </strong>
                             <br>
                         {{ review.review_description|safe }}
                         <br>
                         <small>Reviewed By: {{ review.created_by }} &nbsp;</small>
                         <small>Updated : {{review.ts|ctime}}  &nbsp;</small>
-                        </p>
-                            
-                       
+                        </p>           
                         {% if session.user|lower == review.created_by|lower %}
                         <div class="field">
                             <p class="control">

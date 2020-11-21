@@ -18,7 +18,7 @@ mail= Mail(app)
 app.config['MONGO_DBNAME'] = os.environ.get("MONGODB_NAME")
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.secret_key = os.environ.get("SECRET_KEY")
-
+#smtp Flaskmail config
 app.config['MAIL_SERVER']='smtp.gmail.com'
 app.config['MAIL_PORT'] = 465
 app.config['MAIL_USERNAME'] = os.environ.get("MAIL_USERNAME")
@@ -29,7 +29,7 @@ mail = Mail(app)
 
 mongo = PyMongo(app)
 
-
+#Main reviews View
 @app.route("/")
 @app.route("/get_reviews")
 def get_reviews():
@@ -45,7 +45,7 @@ def timectime(s):
     return time.ctime(s) # datetime.datetime.fromtimestamp(s)
 
 
-
+#Register
 @app.route("/register", methods=["GET","POST"])
 def register():
     if request.method == "POST":
@@ -84,7 +84,7 @@ def register():
 
     return render_template("register.html")
 
-
+#Profile based on username
 @app.route('/profile/<username>', methods=["GET", "POST"])
 def profile(username):
     #Get the session username from DB
@@ -104,7 +104,7 @@ def profile(username):
     #direct to login page if not in session
     return redirect(url_for('login'))
 
-
+#Login
 @app.route('/login', methods=["GET", "POST"])
 def login():
     if request.method == "POST":
@@ -135,7 +135,7 @@ def login():
 
     return render_template("login.html")
 
-
+#logout
 @app.route("/logout")
 def logout():
     flash("You are now Logged Out!")
@@ -143,7 +143,7 @@ def logout():
     session.pop("user")
     return redirect(url_for("login"))
 
-
+#Add a new review
 @app.route("/add_review", methods=["GET", "POST"])
 def add_review():
     
@@ -169,7 +169,7 @@ def add_review():
     categories = mongo.db.categories.find().sort('category_name',1)
     return render_template("add_review.html", categories=categories)
 
-
+#popular Reviews
 @app.route("/popular")
 def popular():
     popular_reviews = mongo.db.reviews.find(
@@ -178,14 +178,14 @@ def popular():
     categories = mongo.db.categories.find()
     return render_template('popular.html', reviews=popular_reviews,categories=categories)
 
-
+#Recent Reviews
 @app.route("/recent")
 def recent():
     latest_reviews = mongo.db.reviews.find().sort("_id",-1).limit(50);
     categories = mongo.db.categories.find()
     return render_template('recent.html', reviews=latest_reviews, categories=categories)
 
-
+#edit a review
 @app.route("/edit_review/<review_id>", methods=["GET", "POST"])
 def edit_review(review_id):
     if request.method == "POST":
@@ -208,7 +208,7 @@ def edit_review(review_id):
     categories = mongo.db.categories.find().sort('category_name', 1)
     return render_template("edit_review.html", review=review, categories=categories)
 
-
+#Delete a review
 @app.route("/delete_review/<review_id>")
 def delete_review(review_id):
         mongo.db.reviews.remove({"_id":ObjectId(review_id)})
@@ -217,13 +217,13 @@ def delete_review(review_id):
   
  
 
-
+#Show Categories
 @app.route("/get_categories")
 def get_categories():
     categories = mongo.db.categories.find().sort('category_name',1)
     return render_template("categories.html", categories=categories )
 
-
+#Add a category
 @app.route("/add_category", methods=["GET", "POST"])
 def add_category():
     tag_styles = {
@@ -250,7 +250,7 @@ def add_category():
 
     return render_template("add_category.html", tag_styles=tag_styles)
 
-
+#Edit Category based on ID
 @app.route("/edit_category/<category_id>", methods=["GET", "POST"])
 def edit_category(category_id):
     tag_styles = {
@@ -278,7 +278,7 @@ def edit_category(category_id):
     category = mongo.db.categories.find_one({"_id": ObjectId(category_id)})
     return render_template('edit_category.html', category=category, tag_styles=tag_styles)
 
-
+#Newsletter signup and Mail confirmation
 @app.route("/newsletter", methods=["GET", "POST"])
 def newsletter():
         # check if session user exists
@@ -304,7 +304,7 @@ def newsletter():
 
         mongo.db.newsletter.insert_one(submit)
         flash("Newsletter Signup Successful")
-        # Send Email to registered Email
+        # Send Email to  Email on form newsletter
         send_to = request.form.get('newsletter_email')
         msg = Message('Hello', sender = 'info@dublin-360.com', recipients = [send_to])
         msg.body = "Hello {} {} ,Thank you for registering to Revvuu-IT".format(request.form.get('first_name'),request.form.get('last_name'))

@@ -14,5 +14,12 @@ article {
 
 }
 
-
+/* cropped review image */
+  .cropped {
+    width: 100%; /* width of container */
+    height: 220px; /* height of container */
+    object-fit: cover;
+    object-position: center center; /* try 20px 10px */ 
+    border: 5px solid black;
+}
 

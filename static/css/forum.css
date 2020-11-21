@@ -37,9 +37,6 @@ html,body {
     line-height: 2.8;
   }
 
-  .media-left img {
-    border-radius: 5%;
-  }
   
 
   .media-content p {
@@ -47,11 +44,11 @@ html,body {
     line-height: 2.3;
     font-weight: 700;
     color: #8F99A3;
-    padding: 0.1rem;
+    padding: 0;
   }
 
   article.post {
-    margin: 1rem;
+    margin: 0.1rem;
     padding: 1rem;
     border-bottom: 1px solid #E6EAEE;
   }
@@ -61,5 +58,9 @@ html,body {
   }
   .menu-list li{
     padding: 5px;
+  }
+
+  .media-content figure {
+    margin: 0;
   }
 
