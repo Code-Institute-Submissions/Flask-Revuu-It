@@ -7,22 +7,14 @@
         {% for review in reviews %}
            <div class="container">
             <article class="media post is-centered">
-                <!--
-                <figure class="media-left">
-                    <p class="image is-32x32">
-                      <img src="{{ review.images.image_url }}" alt="review-image">
-                    </p>
-                  </figure>
-                  -->
                 <div class="media-content">
                     <div class="content">
                         <figure>
-                          
                               <img class="cropped" src="{{ review.images.image_url }}" alt="review-image">
-                    
                           </figure>
                         <p>
-                            <strong>{{ review.review_title|upper }}:
+                          <h2><strong class="has-text-white has-background-dark">{{ review.review_title|upper }}:</strong></h2>
+                            <strong>
                                 {% if review.category_name == "poi" %}
                                 <span class="tag is-success is-large">{{review.category_name|upper}}</span>
                               {% elif review.category_name == "restaurant"  %}
@@ -42,8 +34,8 @@
                               {% endfor %}
                             </strong>
                             <br>
-                        {{ review.review_description|safe }}
-                        <br>
+                            {{ review.review_description|safe }}
+                            <br>
                         <small>Reviewed By: {{ review.created_by }} &nbsp;</small>
                         <small>Updated : {{review.ts|ctime}}  &nbsp;</small>
                         </p>           
@@ -76,7 +68,10 @@
                 </div>
                 {% if session.user|lower == review.created_by|lower %}
                   <div class="media-right"> 
-                    <a onclick="window.confirm('Are You Sure?')" href="{{ url_for('delete_review', review_id=review._id) }}" class=" button delete is-danger"></a> 
+                    <form action="{{ url_for('delete_review', review_id=review._id) }}" Method="POST">
+                        <input id="deleteConfirm" type="text" class="is-hidden" value="" name="deleteConfirm">
+                        <button type=submit onclick="confirmation()"  class="button delete is-large is-danger"></button>
+                    </form> 
                   </div> 
                 {% endif %}
             </article>

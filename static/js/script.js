@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+  // Flash Message Box Delete Functionality
     (document.querySelectorAll('.notification .delete') || []).forEach(($delete) => {
       var $notification = $delete.parentNode;
   
@@ -6,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
         $notification.parentNode.removeChild($notification);
       });
     });
-
+//NavBar Mobile Menu
       // Get all "navbar-burger" elements
   const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
 
@@ -29,18 +30,16 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
   });
-
-  function myConfirm() {
+  
+// Delete Confirmation Dialog Box
+  function confirmation() {
    
-    if (confirm('Are you sure you want to Delete?')) {
-        // Save it!
-       
-
-        return localStorage.setItem('myConfirm', 'Yes');
-        console.log('Thing was saved to the database.');
+    if (confirm('Are you sure you want to Delete this Item?')) {
+        // return "Yes" Delete
+        return document.getElementById("deleteConfirm").value = "Yes";
       } else {
-        return localStorage.setItem('myConfirm', 'No');
-        // Do nothing!
-        console.log('Thing was not saved to the database.');
-      }
+         // return "No" Do not Delete
+        return document.getElementById("deleteConfirm").value = "No";
+        
+      };
   }

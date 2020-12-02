@@ -4,6 +4,7 @@ from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from datetime import datetime
 from flask_mail import Mail, Message
+from functools import wraps
 import time
 from werkzeug.security import generate_password_hash, check_password_hash
 
@@ -28,6 +29,8 @@ app.config['MAIL_USE_SSL'] = True
 mail = Mail(app)
 
 mongo = PyMongo(app)
+
+
 
 #Main reviews View
 @app.route("/")
@@ -84,8 +87,22 @@ def register():
 
     return render_template("register.html")
 
+
+#Login decorator
+def login_required(f):
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        if "user" in session:
+            return f(*args, **kwargs)
+        else:
+            flash("Please Login to Access")
+            return redirect(url_for("login", next=request.url))
+    return decorated_function
+
+
 #Profile based on username
 @app.route('/profile/<username>', methods=["GET", "POST"])
+@login_required
 def profile(username):
     #Get the session username from DB
     username = mongo.db.users.find_one(
@@ -137,6 +154,7 @@ def login():
 
 #logout
 @app.route("/logout")
+@login_required
 def logout():
     flash("You are now Logged Out!")
     #Remove user from the session cookies
@@ -145,6 +163,7 @@ def logout():
 
 #Add a new review
 @app.route("/add_review", methods=["GET", "POST"])
+@login_required
 def add_review():
     
 
@@ -187,6 +206,7 @@ def recent():
 
 #edit a review
 @app.route("/edit_review/<review_id>", methods=["GET", "POST"])
+@login_required
 def edit_review(review_id):
     if request.method == "POST":
         now = datetime.now()
@@ -209,22 +229,29 @@ def edit_review(review_id):
     return render_template("edit_review.html", review=review, categories=categories)
 
 #Delete a review
-@app.route("/delete_review/<review_id>")
+@app.route("/delete_review/<review_id>", methods=["GET","POST"])
+@login_required
 def delete_review(review_id):
-        mongo.db.reviews.remove({"_id":ObjectId(review_id)})
-        flash("Review Successfully Deleted")
-        return redirect(url_for("get_reviews"))
-  
- 
+    if request.method == "POST":
+        if request.form.get("deleteConfirm") == "Yes":
+            mongo.db.reviews.remove({"_id":ObjectId(review_id)})
+            flash("Review Successfully Deleted")
+            return redirect(url_for("get_reviews"))
+        else:
+            flash("Operation Cancelled")
+            return redirect(url_for("get_reviews"))
+       
 
 #Show Categories
 @app.route("/get_categories")
+@login_required
 def get_categories():
     categories = mongo.db.categories.find().sort('category_name',1)
     return render_template("categories.html", categories=categories )
 
 #Add a category
 @app.route("/add_category", methods=["GET", "POST"])
+@login_required
 def add_category():
     tag_styles = {
         "Blue": "is-info",
@@ -252,6 +279,7 @@ def add_category():
 
 #Edit Category based on ID
 @app.route("/edit_category/<category_id>", methods=["GET", "POST"])
+@login_required
 def edit_category(category_id):
     tag_styles = {
         "Blue": "is-info",
@@ -277,6 +305,22 @@ def edit_category(category_id):
 
     category = mongo.db.categories.find_one({"_id": ObjectId(category_id)})
     return render_template('edit_category.html', category=category, tag_styles=tag_styles)
+
+
+#Delete a review
+@app.route("/delete_category/<category_id>", methods=["GET","POST"])
+@login_required
+def delete_category(category_id):
+    if request.method == "POST":
+        if request.form.get("deleteConfirm2") == "Yes":
+            mongo.db.categories.remove({"_id":ObjectId(category_id)})
+            flash("Category Successfully Deleted")
+            return redirect(url_for("get_categories"))
+        else:
+            flash("Operation Cancelled")
+            return redirect(url_for("get_categories"))
+      
+
 
 #Newsletter signup and Mail confirmation
 @app.route("/newsletter", methods=["GET", "POST"])
