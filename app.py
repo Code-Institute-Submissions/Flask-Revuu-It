@@ -36,6 +36,7 @@ mongo = PyMongo(app)
 @app.route("/")
 @app.route("/get_reviews")
 def get_reviews():
+    # Get all reviews from Database
     reviews = mongo.db.reviews.find()
     categories = mongo.db.categories.find()
     
@@ -67,7 +68,7 @@ def register():
         now = datetime.now()
         timestamp = datetime.timestamp(now)
        
-
+        #submit new user object
         new_user_submit = {
             "username": request.form.get("username").lower(),
             "email": request.form.get("email").lower(),
@@ -88,7 +89,7 @@ def register():
     return render_template("register.html")
 
 
-#Login decorator
+#Login decorator - To disable pages for non logged in users.
 def login_required(f):
     @wraps(f)
     def decorated_function(*args, **kwargs):
@@ -114,8 +115,8 @@ def profile(username):
         {'username': session["user"]})['ts'] 
 
     date_time = datetime.fromtimestamp(timestamp)
-    readable_dt = date_time.strftime("Created: %m/%d/%Y @ Time: %H:%M:%S")
-	
+    readable_dt = date_time.strftime("Created: %m/%d/%Y @ Time: %H:%M:%S") # display readable date and Time
+	# render profile if user logged in
     if session["user"]:
        return render_template('profile.html', username=username, email=email, readable_dt=readable_dt)
     #direct to login page if not in session
@@ -169,7 +170,7 @@ def add_review():
 
     if request.method == "POST":
         now = datetime.now()
-
+        # Review object - Get data from Form
         review = {
         "category_name" : request.form.get('category_name').lower(),
         "review_title" : request.form.get('review_title'),
@@ -191,6 +192,7 @@ def add_review():
 #popular Reviews
 @app.route("/popular")
 def popular():
+    #display popular reviews greater than 3 Limit to 50 Reviews
     popular_reviews = mongo.db.reviews.find(
         {"star_rating":{"$gt":3}}
     ).limit(50)
