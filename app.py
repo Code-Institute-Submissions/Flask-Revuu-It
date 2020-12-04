@@ -211,6 +211,7 @@ def recent():
 def edit_review(review_id):
     if request.method == "POST":
         now = datetime.now()
+        # get submit data from edit form
         submit = {
             "category_name" : request.form.get("category_name").lower(),
             "review_title": request.form.get("review_title"),
@@ -221,6 +222,7 @@ def edit_review(review_id):
             "created_by": session["user"],
             "agree_terms": request.form.get("agree_terms"),
         }
+        #updated edited review
         mongo.db.reviews.update({"_id":ObjectId(review_id)}, submit)
         flash("Review Successfully Updated")
         return redirect(url_for("get_reviews"))
@@ -234,6 +236,7 @@ def edit_review(review_id):
 @login_required
 def delete_review(review_id):
     if request.method == "POST":
+        # confirm deletion
         if request.form.get("deleteConfirm") == "Yes":
             mongo.db.reviews.remove({"_id":ObjectId(review_id)})
             flash("Review Successfully Deleted")
@@ -254,6 +257,7 @@ def get_categories():
 @app.route("/add_category", methods=["GET", "POST"])
 @login_required
 def add_category():
+    # Tag Styles for Categories
     tag_styles = {
         "Blue": "is-info",
         "Black": "is-black",
@@ -282,6 +286,7 @@ def add_category():
 @app.route("/edit_category/<category_id>", methods=["GET", "POST"])
 @login_required
 def edit_category(category_id):
+    # Category Styles
     tag_styles = {
         "Blue": "is-info",
         "Black": "is-black",
@@ -313,6 +318,7 @@ def edit_category(category_id):
 @login_required
 def delete_category(category_id):
     if request.method == "POST":
+        #Delete Confirmation
         if request.form.get("deleteConfirm2") == "Yes":
             mongo.db.categories.remove({"_id":ObjectId(category_id)})
             flash("Category Successfully Deleted")
