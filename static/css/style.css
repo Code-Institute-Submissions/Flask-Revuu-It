@@ -28,3 +28,7 @@ article {
     border: 5px solid black;
 }
 
+/* Add space below form fields */
+.field:not(:last-child) {
+    margin-bottom: 1.2em;
+}

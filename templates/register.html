@@ -2,6 +2,7 @@
 
 {% block content %}
 <h1 class="title has-text-centered">Register</h1>
+<div class="column is-half is-offset-one-quarter">
 <form action="{{url_for('register')}}" method="POST">
     <!--username input-->
     <div class="field">
@@ -53,4 +54,5 @@
         </p>
     </div>
 </form>
+</div>
 {% endblock %}
