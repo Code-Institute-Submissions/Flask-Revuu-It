@@ -3,9 +3,9 @@
 
 
 {% block content %}
-        
+<div class="container">
         {% for review in reviews %}
-           <div class="container">
+           
             <article class="media post is-centered">
                 <div class="media-content">
                     <div class="content">
@@ -82,8 +82,9 @@
                   </div> 
                 {% endif %}
             </article>
-        </div>
+        
         {% endfor %}
+      </div>
 
 
 {% endblock %}

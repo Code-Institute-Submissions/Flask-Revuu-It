@@ -8,6 +8,10 @@ article {
     background-color: #fafafa;
 }
 
+article.post{
+     margin: 10px;
+}
+
 .box {
     padding: 0.2rem;
     margin: 0.1rem;
