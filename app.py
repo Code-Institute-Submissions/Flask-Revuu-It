@@ -192,8 +192,9 @@ def add_review():
 @app.route("/popular")
 def popular():
     popular_reviews = mongo.db.reviews.find(
-        {"star_rating":{"$gt":4}}
-    )
+        {"star_rating":{"$gt":3}}
+    ).limit(50)
+    
     categories = mongo.db.categories.find()
     return render_template('popular.html', reviews=popular_reviews,categories=categories)
 

@@ -11,10 +11,9 @@ Milestone 3 Project: Code Institute: Revuu-IT
 ## Table of Contents
 1. [**Project overview**](#project-overview)
 2. [**UX**](#ux)
-   - [**Wireframe**](#wireframe)
+   - [**Concept**](#concept)
  
 3. [**Features**](#features)
-   - [**Existing Features**](#existing-features)
    - [**Features Left to Implement**](#Features-Left-to-Implement)
  
 4. [**Technologies Used**](#technologies-used)
@@ -37,8 +36,8 @@ A Site developed for MS3 Project in Code Institute. The site consists of a revie
 Users may Register with their own username, email and password. Data is stored in an Atlas MongoDb cluster. Once registered the user may login. A logged in user has the ability to add a new review based on a category of choice. The user may only edit or Delete their own reviews.
 The Admin user has the ability to add edit and delete categories and any reviews they may submit.
 For demonstration purposese the admin can login using the details below:
-User: admin 
-password: 12345
+- User: admin 
+- password: 12345
 
  
 ## UX
@@ -46,32 +45,38 @@ password: 12345
 - The user can add a review by clicking the 'New Review' menu link. They can select a category for their review, a Title , paste an image url hyperlink and add a content edited review description that uses the CKEDITOR. The user must agree to the terms & Conditions and can add a star rating based on their review. Submitting will add the review to the Reviews Page.
 - Popular reviews - Any Reviews with a star rating of 4 or above are displayed on this page
 - Recent Reviews - Any Review added recently based on the Object_Id in MongoDB are displayed. Most recent are on top.
-- Register - A user may register with Revuu-IT using a chosen Username/Email and password. If the username or email is already in the DB an already exists warning is displayed
+- Register - A user may register with Revuu-IT using a chosen Username/Email and password. If the username or email is already in the DB an already exists warning is displayed.
 - Login - A user may login to the app using their registered username and password.
+- If a user tries to access a page they do not have access to they are redirected to the login page.
+- If a user is not logged in they cannot see the add review page and profile page. A user not logged in can see the login and register icons and only view reviews. The categories sidebar is also hidden from view.
+- If a user is logged in they can see the add review page and profile page. The login and Register icons are also hidden and a logout button is present. The categories sidebar is visible.
 
 
 ### Initial Concept
 Link to Initial concept:
-- [Wireframe](https://dermomurphy.github.io/MS3-Mockup/)
+- [Concept](https://dermomurphy.github.io/MS3-Mockup/)
 
 ## Features
 
-**Main Home Page** - Main Content Cards for Home Brews Selected |  ABV and IBU Selection sliders with Get Recipe Buttons | Random Beer Recipe Generated on page refresh.
+**Main Review Page** - Review Content with Header Image on each review, Card title, star rating visible in number of stars and review content description.
 
-**Brew Calculator Page** - 2 Brewing Calcuators one for ABV calcuation the other for Priming sugar calculation.
+**Register** - A user may register with the app providing a username/email and password assuming the existing username/email is not already present in database.
 
-**Contact Page** - Main Contact form for Contacting Brewpunk with message ,reply email, first name and last name fields.
- 
-### Existing Features
-- **Links to Sections** - Quick Navbar + Bottom right corner pop out links to Each Page. Also on Footer.
-- **Reandom Beer Recipe Generated** - Featured Beer Recipe randomly generated on page refresh.
-- **ABU Slider** - ABU slider operational to choose deisred Alcohol by volume %.
-- **IBU Slider** - IBU slider operational to choose deisred Bitterness Level.
-- **Get Recipe Buttons** - Each button links to Generated Card Content based on IBU and ABV selection levels. Data fetched from PunkAPI
-- **Contact Form** - A way to send a suggestion  or send a generic message to us.
-- **Footer Section** - Showcases Company Bio - Page links and Social media content
-- **Social Media Links** - Links to all social media content in footer.
-- **Made With Materialize** - Link in footer to Materialize framework Documentation
+**Login** - A user may login providing the correct username and password combination. Access is denied if provided false data. Passwords are hashed in the db using sha256 encrpytion.
+
+**Newsletter Signup** - A user many sign up for Our newsletter. The details are stored in the db and a confirmation email is sent via python to the using flask_mail module.
+
+**Popular Reviews** - A list of popular reviews with a star rating of greater than 3. Limited to 50 Reviews
+
+**Recent Reviews** - A list of Recent reviews sorted by most recent review. Limited to 50 Reviews
+
+**Edit/Delete Review** - If a user has created a review they have the ability to edit or delete that review. Once the user session matches the current username. A red icon on each review is shown to the user for deletion with confirmation dialog. A review is deleted from the db if confirmed. The ability to edit a review is also available. In Edit mode all content can be edited and updated on the chosen review only if the user has initially created the review.
+
+**Manage Categories** - Admin User only - Specific to adminstrator only. Admin can see current categories can choose to add edit or delete each category from the database.
+
+**Add/Edit/Delete Category** - Add Category takes the admin to an Add Category Page where they can add the Category name and Tag Colour accordingly based on Bulma Presets. Edit Category can change name and styling of each category. Delete Category with Confirmation dialog to delete the category from the database.
+
+
 
 
 
@@ -84,8 +89,8 @@ Link to Initial concept:
     - Built with Bulma CSS framework. 
 2. ![jQuery](https://img.shields.io/badge/jQuery-3.5.1-yellowgreen)
     - [jQuery](https://jquery.com/) - is a fast, small, and feature-rich JavaScript library. It makes things like HTML document traversal and manipulation, event handling, animation. The project uses **JQuery** to simplify DOM manipulation as part of Materialize framework.
-3. [MongoDB]()
-4. [Flask]()
+3. [MongoDB](https://www.mongodb.com/)
+4. [Flask](https://flask.palletsprojects.com/en/1.1.x/)
 
 4.  [Visual Studio Code](https://code.visualstudio.com/): Programming code editor created by Microsoft.
 5.  ![Chrome Developer Tools](https://img.shields.io/badge/Chrome%20Dev%20Tools-Google%20Chrome-blue)
@@ -95,7 +100,7 @@ Link to Initial concept:
 7.  ![GitHub](https://img.shields.io/badge/GitHub-Git%20repository%20hosting%20service-lightgrey)
     - [GitHub](https://github.com/) - Web-based hosting service for version control using Git.
 8.  [W3CMarkupValidation](https://validator.w3.org/) Tools to assess CSS and HTML validation.
-9.  [Metatags](https://metatags.io/) Generation of Meta tag content for social media sharing and SEO.
+9.  [Metatags](https://metatags.io/) Generation of Meta tag content for social media sharing and SEO. ***TODO***
 10. [GoogleFonts](https://fonts.google.com/) - font families from Google.
 11. [CKEDITOR](https://www.ckeditor.com/) - Javascript library for adding rich content editing abilities.
 13. ![HTML5](https://img.shields.io/static/v1?label=HTML&message=5&color=E34F26&logo=html5&logoColor=ffffff)
