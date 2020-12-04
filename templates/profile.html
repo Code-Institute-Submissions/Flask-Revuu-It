@@ -1,30 +1,31 @@
 {% extends "base.html" %}
 {% block content %}
-  <div class="container">
-    <!-- User Profile Card -->
-    <div class="card">
-        <div class="card-content">
-        <h1>Profile</h1>
-          <div class="media">
-            <div class="media-left is-hidden-mobile">
-              <figure class="image is-48x48">
-                <span style="font-size: 48px; color: Dodgerblue;">
-                    <i class="fas fa-user"></i>
-                  </span>
-              </figure>
-            </div>
-            <div class="media-content">
-              <p class="title is-4">Username: {{ username }}</p>
-              <p class="subtitle is-6">Email: {{ email }}</p>
-            </div>
-          </div>
-      
-          <div class="content">
-            <a href="#" class="button is-info is-outline">See Your Reviews</a>
-            <br>
-            <time datetime="{{ readable_ts }}">{{ readable_dt }}</time>
-          </div>
+<div class="container">
+  <!-- User Profile Card -->
+  <div class="card">
+    <div class="card-content">
+      <h1>Profile</h1>
+      <div class="media">
+        <div class="media-left is-hidden-mobile">
+          <figure class="image is-48x48">
+            <span style="font-size: 48px; color: Dodgerblue;">
+              <i class="fas fa-user"></i>
+            </span>
+          </figure>
+        </div>
+        <!-- Display username and Email of Logged in User-->
+        <div class="media-content">
+          <p class="title is-4">Username: {{ username }}</p>
+          <p class="subtitle is-6">Email: {{ email }}</p>
         </div>
       </div>
+     <!--- TODO -->
+      <div class="content">
+        <a href="#" class="button is-info is-outline">See Your Reviews</a>
+        <br>
+        <time datetime="{{ readable_ts }}">{{ readable_dt }}</time>
+      </div>
+    </div>
   </div>
+</div>
 {% endblock %}

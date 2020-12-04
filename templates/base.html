@@ -1,161 +1,164 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Revuu-IT</title>
-        <link rel="shortcut icon" href="../images/favicon.png" type="image/x-icon">
-        <!-- Fontawesome Icons-->
-      
-        <!--Google Fonts-->
-		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
-		<!-- Bulma Version 0.9.0-->
-		<link rel="stylesheet" href="https://unpkg.com/bulma@0.9.0/css/bulma.min.css" />
-        <link rel="stylesheet" href="{{ url_for('static',filename='css/forum.css') }}" type="text/css" >
-        <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}" type="text/css" >
-        {% block styles %}
-        {% endblock %}
-        
-	</head>
-	<body>
-		<nav class="navbar is-white topNav">
-			<div class="container">
-				<div class="navbar-brand">
-                    <strong>
-					 <a class="navbar-item" href="{{url_for('get_reviews')}}">
-                        <span class="has-text-primary icon"><i class="fas fa-check"></i></span> 
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Revuu-IT</title>
+    <link rel="shortcut icon" href="../images/favicon.png" type="image/x-icon">
+
+    <!--Google Fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+    <!-- Bulma Version 0.9.0-->
+    <link rel="stylesheet" href="https://unpkg.com/bulma@0.9.0/css/bulma.min.css" />
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/forum.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}" type="text/css">
+    {% block styles %}
+    {% endblock %}
+
+</head>
+
+<body>
+    <nav class="navbar is-white topNav">
+        <div class="container">
+            <div class="navbar-brand">
+                <strong>
+                    <a class="navbar-item" href="{{url_for('get_reviews')}}">
+                        <span class="has-text-primary icon"><i class="fas fa-check"></i></span>
                         <span>RevUU-IT</span>
-                     </a>
-                    </strong>
-					<div class="navbar-burger burger" data-target="topNav">
-						<span></span>
-						<span></span>
-						<span></span>
-					</div>
-				</div>
-				<div id="topNav" class="navbar-menu">
-					<div class="navbar-start">
-                        <a class="navbar-item is-active" href="{{url_for('get_reviews')}}">Home</a>
-                        <a class="navbar-item " href="{{url_for('popular')}}">Popular</a>
-						<a class="navbar-item" href="{{url_for('recent')}}">Recent</a>
-                        {% if session.user %}
-                            <a class="navbar-item" href="{{url_for('profile', username=session['user'])}}">My Profile</a>
-                            <a class="navbar-item" href="{{url_for('add_review')}}">New Review</a>
-                          {% if session.user == "admin"|lower %}
-						     <a class="navbar-item" href="{{url_for('get_categories')}}">Manage Categories</a>
-                             <a class="navbar-item" href="#">Admin</a>
-                          {% endif %}
+                    </a>
+                </strong>
+                <div class="navbar-burger burger" data-target="topNav">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+            <div id="topNav" class="navbar-menu">
+                <div class="navbar-start">
+                    <a class="navbar-item is-active" href="{{url_for('get_reviews')}}">Home</a>
+                    <a class="navbar-item " href="{{url_for('popular')}}">Popular</a>
+                    <a class="navbar-item" href="{{url_for('recent')}}">Recent</a>
+                    {% if session.user %}
+                        <a class="navbar-item" href="{{url_for('profile', username=session['user'])}}">My Profile</a>
+                        <a class="navbar-item" href="{{url_for('add_review')}}">New Review</a>
+                        {% if session.user == "admin"|lower %}
+                            <a class="navbar-item" href="{{url_for('get_categories')}}">Manage Categories</a>
+                            <a class="navbar-item" href="#">Admin</a>
                         {% endif %}
-					</div>
-					<div class="navbar-end">
-						<div class="navbar-item">
-                            <a class="navbar-item" href="{{url_for('newsletter')}}">Newsletter Sign-Up</a>
-							<div class="field is-grouped">
-                                {% if session.user %}
-                                <p class="control">
-									<a  href="{{url_for('logout')}}" class="button is-small is-danger is-outlined">
-										<span class="icon">
-											<i class="fa fa-user"></i>
-										</span>
-										<span>Log Out</span>
-									</a>
-                                </p>
-                                {% else %}
-                                    <p class="control">
-                                        <a href="{{url_for('register')}}" class="button is-small">
-                                            <span class="icon">
-                                                <i class="fa fa-user-plus"></i>
-                                            </span>
-                                            <span>
-                                                Register
-                                            </span>
-                                        </a>
-                                    </p>
-                                    <p class="control">
-                                        <a href="{{url_for('login')}}"class="button is-small is-info is-outlined">
-                                            <span class="icon">
-                                                <i class="fa fa-user"></i>
-                                            </span>
-                                            <span>Log in</span>
-                                        </a>
-                                    </p>
-                                {% endif %}
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</nav>
-        <!-- Flash Messages Container -->
-        <section class="container">
-            {% with messages = get_flashed_messages() %}
-              {% if messages %}
-                {% for message in messages %}
-                  <div class="notification is-warning">
-                    <button class="delete"></button>
-                      <strong>{{ message }}</strong>
-                  </div>
-                {% endfor %}
-              {% endif %}
-            {% endwith %}
-        </section>
-        <!-- Main Container -->
-		<section class="container is-fluid">
-			<div class="columns  is-centered">
-                {% if session.user %}
-                    {% block menutags %}
-                    {% endblock %}
-                {% endif %}
-				<div class="column is-10">
-					<div class="box content">
-                        {% block content %}
-                        {% endblock %}
-					</div>
-				</div>
-			</div>
-		</section>
-		<footer class="footer">
-			<div class="container">
-				<div class="content has-text-centered">
-					<div class="columns is-mobile is-centered">
-						<div class="field is-grouped is-grouped-multiline">
+                    {% endif %}
+                </div>
+                <div class="navbar-end">
+                    <div class="navbar-item">
+                        <a class="navbar-item" href="{{url_for('newsletter')}}">Newsletter Sign-Up</a>
+                        <div class="field is-grouped">
                             {% if session.user %}
-                                <div class="control">
-                                    <a href="{{url_for('logout')}}" class="button is-small is-danger">
+                                <p class="control">
+                                    <a href="{{url_for('logout')}}" class="button is-small is-danger is-outlined">
                                         <span class="icon">
-                                            <i class="fas fa-user"></i>
+                                            <i class="fa fa-user"></i>
                                         </span>
-                                        <span>Logout</span>
+                                        <span>Log Out</span>
                                     </a>
-                                </div>
+                                </p>
                             {% else %}
-                                <div class="control">
+                                <p class="control">
                                     <a href="{{url_for('register')}}" class="button is-small">
                                         <span class="icon">
-                                            <i class="fas fa-user-plus"></i>
+                                            <i class="fa fa-user-plus"></i>
                                         </span>
-                                        <span>Register</span>
+                                        <span>
+                                            Register
+                                        </span>
                                     </a>
-                                </div>
-                                <div class="control">
+                                </p>
+                                <p class="control">
                                     <a href="{{url_for('login')}}" class="button is-small is-info is-outlined">
-                                    <span class="icon">
-                                        <i class="fas fa-user"></i>
-                                    </span>
-                                    <span>Login</span>    
+                                        <span class="icon">
+                                            <i class="fa fa-user"></i>
+                                        </span>
+                                        <span>Log in</span>
                                     </a>
-                                    </div>
-                                </div>
+                                </p>
                             {% endif %}
-						</div>
-					</div>
-				</div>
-			</div>
-		</footer>
-        <script type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}"></script>
-        <script defer src="https://use.fontawesome.com/releases/v5.14.0/js/all.js"></script>
-        {% block scripts %}
-        {% endblock %}
-    </body>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- Flash Messages Container -->
+    <section class="container">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <div class="notification is-warning">
+                    <button class="delete"></button>
+                    <strong>{{ message }}</strong>
+                </div>
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
+    </section>
+    <!-- Main Container -->
+    <section class="container is-fluid">
+        <div class="columns  is-centered">
+            {% if session.user %}
+                {% block menutags %}
+                {% endblock %}
+            {% endif %}
+            <div class="column is-10">
+                <div class="box content">
+                    {% block content %}
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+        <div class="container">
+            <div class="content has-text-centered">
+                <div class="columns is-mobile is-centered">
+                    <div class="field is-grouped is-grouped-multiline">
+                        {% if session.user %}
+                        <div class="control">
+                            <a href="{{url_for('logout')}}" class="button is-small is-danger">
+                                <span class="icon">
+                                    <i class="fas fa-user"></i>
+                                </span>
+                                <span>Logout</span>
+                            </a>
+                        </div>
+                        {% else %}
+                        <div class="control">
+                            <a href="{{url_for('register')}}" class="button is-small">
+                                <span class="icon">
+                                    <i class="fas fa-user-plus"></i>
+                                </span>
+                                <span>Register</span>
+                            </a>
+                        </div>
+                        <div class="control">
+                            <a href="{{url_for('login')}}" class="button is-small is-info is-outlined">
+                                <span class="icon">
+                                    <i class="fas fa-user"></i>
+                                </span>
+                                <span>Login</span>
+                            </a>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        </div>
+    </footer>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <!-- Fontawesome Icons-->
+    <script defer src="https://use.fontawesome.com/releases/v5.14.0/js/all.js"></script>
+    {% block scripts %}
+    {% endblock %}
+</body>
+
 </html>

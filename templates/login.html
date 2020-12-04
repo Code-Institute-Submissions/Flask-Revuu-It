@@ -4,35 +4,40 @@
 <h1 class="title has-text-centered">Log In</h1>
 
 <form action="{{url_for('login')}}" method="POST">
+    <!-- enter Username -->
     <div class="field">
         <p class="control has-icons-left has-icons-right">
-        <input class="input" type="text" id="username" name="username" placeholder="Username" minlength="5" maxlength="20" pattern="^[a-zA-z0-9]{5,20}$" required>
-        <span class="icon is-small is-left">
-            <i class="fas fa-user"></i>
-        </span>
-        <span class="icon is-small is-right">
-            <i class="fas fa-check"></i>
-        </span>
+            <input class="input" type="text" id="username" name="username" placeholder="Username" minlength="5"
+                maxlength="20" pattern="^[a-zA-z0-9]{5,20}$" required>
+            <span class="icon is-small is-left">
+                <i class="fas fa-user"></i>
+            </span>
+            <span class="icon is-small is-right">
+                <i class="fas fa-check"></i>
+            </span>
         </p>
     </div>
+    <!-- Password -->
     <div class="field">
         <p class="control has-icons-left">
-        <input class="input" type="password" id="password" name="password" placeholder="Password" minlength="5" maxlength="20" pattern="^[a-zA-z0-9]{5,20}$" required>
-        <span class="icon is-small is-left">
-            <i class="fas fa-lock"></i>
-        </span>
+            <input class="input" type="password" id="password" name="password" placeholder="Password" minlength="5"
+                maxlength="20" pattern="^[a-zA-z0-9]{5,20}$" required>
+            <span class="icon is-small is-left">
+                <i class="fas fa-lock"></i>
+            </span>
         </p>
     </div>
+    <!-- Submit Login -->
     <div class="field">
         <p class="control">
-        <button type="submit" class="button is-info is-outlined">
-            <span class="icon">
-              <i class="fas fa-sign-in-alt"></i>
-            </span>
-            <span>
-             Log In
-            </span>
-        </button>
+            <button type="submit" class="button is-info is-outlined">
+                <span class="icon">
+                    <i class="fas fa-sign-in-alt"></i>
+                </span>
+                <span>
+                    Log In
+                </span>
+            </button>
         </p>
     </div>
 </form>

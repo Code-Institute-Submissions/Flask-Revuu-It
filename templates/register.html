@@ -2,48 +2,55 @@
 
 {% block content %}
 <h1 class="title has-text-centered">Register</h1>
-  <form action="{{url_for('register')}}" method="POST">
-        <div class="field">
-            <p class="control has-icons-left has-icons-right">
-            <input class="input" type="text" id="username" name="username" placeholder="Username" minlength="5" maxlength="20" pattern="^[a-zA-z0-9]{5,20}$" required>
+<form action="{{url_for('register')}}" method="POST">
+    <!--username input-->
+    <div class="field">
+        <p class="control has-icons-left has-icons-right">
+            <input class="input" type="text" id="username" name="username" placeholder="Username" minlength="5"
+                maxlength="20" pattern="^[a-zA-z0-9]{5,20}$" required>
             <span class="icon is-small is-left">
                 <i class="fas fa-user"></i>
             </span>
             <span class="icon is-small is-right">
                 <i class="fas fa-check"></i>
             </span>
-            </p>
-        </div>
-        <div class="field">
-            <p class="control has-icons-left has-icons-right">
-            <input class="input" type="email" id="email" name="email" placeholder="Email" minlength="5" maxlength="30" required>
+        </p>
+    </div>
+    <!-- Email Field -->
+    <div class="field">
+        <p class="control has-icons-left has-icons-right">
+            <input class="input" type="email" id="email" name="email" placeholder="Email" minlength="5" maxlength="30"
+                required>
             <span class="icon is-small is-left">
                 <i class="fas fa-envelope"></i>
             </span>
             <span class="icon is-small is-right">
                 <i class="fas fa-check"></i>
             </span>
-            </p>
-        </div>
-        <div class="field">
-            <p class="control has-icons-left">
-            <input class="input" type="password" id="password" name="password" placeholder="Password" minlength="5" maxlength="20" pattern="^[a-zA-z0-9]{5,20}$" required>
+        </p>
+    </div>
+    <!-- Password Field-->
+    <div class="field">
+        <p class="control has-icons-left">
+            <input class="input" type="password" id="password" name="password" placeholder="Password" minlength="5"
+                maxlength="20" pattern="^[a-zA-z0-9]{5,20}$" required>
             <span class="icon is-small is-left">
                 <i class="fas fa-lock"></i>
             </span>
-            </p>
-        </div>
-        <div class="field">
-            <p class="control has-text-centered">
+        </p>
+    </div>
+    <!-- Submit Regsistration -->
+    <div class="field">
+        <p class="control has-text-centered">
             <button type="submit" class="button is-success">
                 <span class="icon">
-                  <i class="fas fa-user-plus"></i>
+                    <i class="fas fa-user-plus"></i>
                 </span>
                 <span>
-                 Register
+                    Register
                 </span>
             </button>
-            </p>
-        </div>
-    </form>
+        </p>
+    </div>
+</form>
 {% endblock %}

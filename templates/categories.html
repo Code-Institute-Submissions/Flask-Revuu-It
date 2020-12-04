@@ -1,66 +1,80 @@
 {% extends "base.html" %}
 {% block styles %}
-  <link rel="stylesheet" href="{{ url_for('static',filename='css/kanban.css') }}" type="text/css" >
+  <link rel="stylesheet" href="{{ url_for('static',filename='css/kanban.css') }}" type="text/css">
 {% endblock %}
 
+<!-- Main Content block-->
 {% block content %}
-
-<div class="column is-12 is-centered">    
+<!-- Add Category Button -->
+<div class="column is-12 is-centered">
     <a class="button is-success is-block is-alt is-large" href="{{url_for('add_category')}}">Add Category</a>
-<section class="menu">
-    <p class="menu-label">
-        <i class="fas fa-list-alt"></i> Current Categories
-        
-    </p>
-</section>
+    <section class="menu">
+        <p class="menu-label">
+            <i class="fas fa-list-alt"></i> Current Categories
+        </p>
+    </section>
 </div>
 
-
+<!-- Main Container to display Categories -->
 <section class="container">
     <div class="level-item">
-        <div class="columns is-multiline is-centered cards-container" id="sectioncontainer"> 
-           
+        <div class="columns is-multiline is-centered cards-container" id="sectioncontainer">
+
             <div class="column is-narrow">
-            <article class="message is-black">
-                <div class="message-header">
-                    <p><i class="fas fa-list-alt"></i> Edit/Delete Category</p>
-                </div>
-                <div class="message-body">
-                    
-                    <div class="board-item">
-                        <div class="board-item-content">
-                            <table class="table  is-bordered is-striped is-hoverable is-fullwidth">
-                                <thead></thead>
-                                  <tr><th>Category</th><th>Control</th></tr>
-                                </thead>
-                                <tbody>
-                                    {% for category in categories %}
-                                    <tr>
-                                        <td><span class="tag {{category.tag_style}} is-medium">{{ category.category_name }}</span></td>
-                                        <td><div class="field is-grouped is-grouped-multiline">
-                                            <div class="control"><a href="{{url_for('edit_category', category_id=category._id)}}" class="tag is-link is-medium">Edit Category</a></div>
-                                            <div class="control">
-                                              <form action="{{ url_for('delete_category', category_id=category._id) }}" Method="POST">
-                                                 <input id="deleteConfirm" type="text" class="is-hidden" value="" name="deleteConfirm">
-                                                 <button type=submit onclick="confirmation()" class="button is-small is-danger">Delete</button>
-                                              </form> 
-                                            </div>
-                                        </div>
-                                        </td>
-                                   </tr>
-                                   {% endfor %}
-                                </tbody>
-                           </table>
-                        </div>
+                <article class="message is-black">
+                    <div class="message-header">
+                        <p><i class="fas fa-list-alt"></i> Edit/Delete Category</p>
                     </div>
-                
-                </div>
-            </article>
+                    <div class="message-body">
+
+                        <div class="board-item">
+                            <div class="board-item-content">
+                                <!-- Table of Categories -->
+                                <table class="table  is-bordered is-striped is-hoverable is-fullwidth">
+                                    <thead></thead>
+                                    <tr>
+                                        <th>Category</th>
+                                        <th>Control</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- Table Body Display Categories Edit/Delete Buttons-->
+                                        {% for category in categories %}
+                                            <tr>
+                                                <td><span
+                                                        class="tag {{category.tag_style}} is-medium">{{ category.category_name }}</span>
+                                                </td>
+                                                <td>
+                                                    <div class="field is-grouped is-grouped-multiline">
+                                                        <div class="control"><a
+                                                                href="{{url_for('edit_category', category_id=category._id)}}"
+                                                                class="tag is-link is-medium">Edit Category</a></div>
+                                                        <div class="control">
+                                                            <form
+                                                                action="{{ url_for('delete_category', category_id=category._id) }}"
+                                                                Method="POST">
+                                                                <input id="deleteConfirm" type="text" class="is-hidden"
+                                                                    value="" name="deleteConfirm">
+                                                                <button type=submit onclick="confirmation()"
+                                                                    class="button is-small is-danger">Delete</button>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+                </article>
             </div>
-            
-         </div>
-           
+
         </div>
+
+    </div>
 </section>
 
 
