@@ -142,8 +142,8 @@ Media Queries Break Screens based on Bulma Framework Breakpoints :
 - Main Page Header Text reduces in size on smaller screens
 - Bulma Framework handles many resizing of Rows and colums based on s/m factors chosen on page HTML.
 
-**PEP Compliance**
-Python code was checked for PEP8 compliance using [PEP8CHecker](http://pep8online.com/)
+**PEP8 Compliance**
+Python code was checked for PEP8 compliance using [PEP8 Checker](http://pep8online.com/)
 **Issues**
 
 
@@ -168,9 +168,10 @@ Deployed using Heroku accessed via the link below
        -  ("MONGO_DBNAME" ,"revuu_data")
        -  ("MAIL_USERNAME" , <USER_EMAIL>)
        -  ("MAIL_PASSWORD" , <USER_PASSWORD>)
-    4. Mail Config Settings
-       If you use Gmail as an smtp server you can login with your own username and password. Note third party app access must be granted
-       # smtp Flaskmail config - Can be found in app.py
+
+   4. Mail Config Settings
+       - If you use Gmail as an smtp server you can login with your own username and password. Note third party app access must be granted
+       ### SMTP Flaskmail config - Can be found in app.py
        
   
 
