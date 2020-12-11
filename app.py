@@ -1,3 +1,5 @@
+from flask import (Flask, render_template, flash, redirect,
+                   request, session, url_for)
 from werkzeug.security import generate_password_hash, check_password_hash
 import time
 from functools import wraps
@@ -6,8 +8,7 @@ from datetime import datetime
 from bson.objectid import ObjectId
 from flask_pymongo import PyMongo
 import os
-from flask import Flask, render_template,
-flash, redirect, request, session, url_for
+
 
 if os.path.exists("env.py"):
     import env
