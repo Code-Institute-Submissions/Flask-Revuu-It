@@ -40,7 +40,7 @@ def get_reviews():
     reviews = mongo.db.reviews.find()
     categories = mongo.db.categories.find()
     
-    return render_template("reviews.html", reviews=reviews, categories=categories)
+    return render_template("reviews.html", reviews=reviews, categories=list(categories))
 
 
 # custom template filter for timestamp
@@ -198,14 +198,28 @@ def popular():
     ).limit(50)
     
     categories = mongo.db.categories.find()
-    return render_template('popular.html', reviews=popular_reviews,categories=categories)
+
+    return render_template('popular.html', reviews=popular_reviews,categories=list(categories))
+
+#Your Reviews
+@app.route("/your_reviews")
+@login_required
+def your_reviews():
+    #display users reviews
+    your_reviews = mongo.db.reviews.find(
+        {"created_by": session["user"].lower()}
+    )
+    categories = mongo.db.categories.find()
+
+    return render_template('your_reviews.html', reviews=your_reviews,categories=list(categories))
 
 #Recent Reviews
 @app.route("/recent")
 def recent():
     latest_reviews = mongo.db.reviews.find().sort("_id",-1).limit(50);
     categories = mongo.db.categories.find()
-    return render_template('recent.html', reviews=latest_reviews, categories=categories)
+     
+    return render_template('recent.html', reviews=latest_reviews, categories=list(categories))
 
 #edit a review
 @app.route("/edit_review/<review_id>", methods=["GET", "POST"])

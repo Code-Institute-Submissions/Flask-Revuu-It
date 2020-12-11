@@ -127,7 +127,7 @@ Mobile
 ### Functional Testing 
 Testing done on VSCode Using Live server.- Mobile responsiveness also tested live via Heroku Live Hosted app.
 
-- All page/card/footer links were tested to open in seperate window.
+- All page/card/footer links were tested to open.
 - Navigation Buttons and Navbar links tested to navigate to specific pages.
 - Various screen sizes also tested from large screen to mobile.
 - Scrollable categories tested for each section.

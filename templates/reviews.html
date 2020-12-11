@@ -4,6 +4,7 @@
 
 {% block content %}
 <div class="container">
+  
         {% for review in reviews %}
            
             <article class="media post is-centered">
@@ -13,21 +14,17 @@
                         <div class="level-left">
                           <h2 class="level-item"><strong class="has-text-white has-background-dark">{{ review.review_title|upper }}:</strong></h2>
                         </div>
-                        <div class="level-right">
-                          <h2 class="level-item"><strong class="has-text-right">
-                          {% if review.category_name == "poi" %}
-                            <span class="tag is-success is-large">{{review.category_name|upper}}</span>
-                          {% elif review.category_name == "restaurant"  %}
-                             <span class="tag is-primary is-large">{{review.category_name|upper}}</span>
-                          {% elif review.category_name == "accommodation"  %}
-                             <span class="tag is-danger is-light is-large">{{review.category_name|upper}}</span>
-                          {% elif review.category_name == "movie"  %}
-                             <span class="tag is-warning is-large">{{review.category_name|upper}}</span>
-                          {% elif review.category_name == "bar"  %}
-                             <span class="tag is-info is-large">{{review.category_name|upper}}</span>
-                          {% else %}
-                             <span class="tag is-success is-large">{{review.category_name|upper}}</span>
-                          {% endif %} </strong></h2>
+                        <div class="level-right">            
+                          {% for category in categories %}
+                            {% if category.category_name|lower == review.category_name|lower %}
+                                  <h2 class="level-item">
+                                    <strong class="has-text-right">
+                                      <span class="tag {{category.tag_style}} is-large">{{review.category_name|upper}}</span> 
+                                    </strong>
+                                  </h2>
+                            {% endif %}
+                          {% endfor %}  
+                          
                         </div>
                       </nav>
         
@@ -82,9 +79,11 @@
                   </div> 
                 {% endif %}
             </article>
+            {% endfor %}
+          
+        </div>
+      
         
-        {% endfor %}
-      </div>
 
 
 {% endblock %}
