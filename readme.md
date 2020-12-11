@@ -142,6 +142,8 @@ Media Queries Break Screens based on Bulma Framework Breakpoints :
 - Main Page Header Text reduces in size on smaller screens
 - Bulma Framework handles many resizing of Rows and colums based on s/m factors chosen on page HTML.
 
+**PEP Compliance**
+Python code was checked for PEP8 compliance using [PEP8CHecker](http://pep8online.com/)
 **Issues**
 
 
@@ -155,7 +157,8 @@ Deployed using Heroku accessed via the link below
   **Process**
    1. Created a Github account at https://github.com My account: https://github.com/Dermomurphy
 
-   2. Synced folder on local machine to Github Repo via VsCode: https://github.com/Dermomurphy/Flask-Revuu-It
+   2. Synced folder on local machine to Github Repo via VsCode: https://github.com/Dermomurphy/Flask-Revuu-It automatic deployment on Heroku
+     - Configure Procfie to have web: python app.py
 
    3. Set environment variables in env.py and on Heroku
        -  ("IP", "0.0.0.0")
@@ -165,6 +168,12 @@ Deployed using Heroku accessed via the link below
        -  ("MONGO_DBNAME" ,"revuu_data")
        -  ("MAIL_USERNAME" , <USER_EMAIL>)
        -  ("MAIL_PASSWORD" , <USER_PASSWORD>)
+    4. Mail Config Settings
+       If you use Gmail as an smtp server you can login with your own username and password. Note third party app access must be granted
+       # smtp Flaskmail config - Can be found in app.py
+       
+  
+
 
 
 ## Credits
