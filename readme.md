@@ -55,6 +55,7 @@ For demonstration purposese the admin can login using the details below:
 ### Initial Concept
 Link to Initial concept:
 - [Concept](https://dermomurphy.github.io/MS3-Mockup/)
+  - Bulma framework was used on this project as I had already used Materialize in the MS2 Project. Bulma does lack some UX features that Materialise has like sticky Nav. I still feel it was beneficial to learn a new framework even though it may be lacking in some areas.
 
 ## Features
 
@@ -70,6 +71,8 @@ Link to Initial concept:
 
 **Recent Reviews** - A list of Recent reviews sorted by most recent review. Limited to 50 Reviews
 
+**Your Reviews** - Once logged in on users profile the user can see a list of their published reviews.
+
 **Edit/Delete Review** - If a user has created a review they have the ability to edit or delete that review. Once the user session matches the current username. A red icon on each review is shown to the user for deletion with confirmation dialog. A review is deleted from the db if confirmed. The ability to edit a review is also available. In Edit mode all content can be edited and updated on the chosen review only if the user has initially created the review.
 
 **Manage Categories** - Admin User only - Specific to adminstrator only. Admin can see current categories can choose to add edit or delete each category from the database.
@@ -81,7 +84,7 @@ Link to Initial concept:
 
 
 ### Features Left to Implement
-- Reply to Reviews section
+- Reply to Reviews section - Allow the user to comment on each review.
 
 ## Technologies Used
 
@@ -135,7 +138,7 @@ Testing done on VSCode Using Live server.- Mobile responsiveness also tested liv
 - Navbar Hamburger menu showing on mobile.
  
 **Media Queries**
-Media Queries Break Screens smaller than 960px:
+Media Queries Break Screens based on Bulma Framework Breakpoints :
 - Main Page Header Text reduces in size on smaller screens
 - Bulma Framework handles many resizing of Rows and colums based on s/m factors chosen on page HTML.
 
@@ -155,26 +158,26 @@ Deployed using Heroku accessed via the link below
    2. Synced folder on local machine to Github Repo via VsCode: https://github.com/Dermomurphy/Flask-Revuu-It
 
    3. Set environment variables in env.py and on Heroku
-        ("IP" - "0.0.0.0")
-        ("PORT" -  "5000")
-        ("SECRET_KEY", <USER_SET>)
-        ("MONGO_URI" - <MONGOURI>)
-        ("MONGO_DBNAME", "revuu_data")
-        ("MAIL_USERNAME", <USER_EMAIL>)
-        ("MAIL_PASSWORD", <USER_PASSWORD>)
+       -  ("IP", "0.0.0.0")
+       -  ("PORT" , "5000")
+       -  ("SECRET_KEY" ,  <USER_SET>)
+       -  ("MONGO_URI", <MONGOURI>)
+       -  ("MONGO_DBNAME" ,"revuu_data")
+       -  ("MAIL_USERNAME" , <USER_EMAIL>)
+       -  ("MAIL_PASSWORD" , <USER_PASSWORD>)
 
 
 ## Credits
 
 ### Content
 - Main Text Written by Dermot Murphy
-- 
+- Dublin 360 - [Dublin 360 website](https://dublin-360.com/) for content and images also. (My own Website)
 - Google Fonts for font styles; https://fonts.google.com/
 - [Bulma CSS Framework](https://bulma.io/)
 - W3schools.com: for code used on contact form page and implementation if necessary.[W3Schools](https://www.w3schools.com/)
 
 ### Media
-- The photos used in this site were obtained from  [Unsplash](https://unsplash.com/) 
+- The photos used in this site were mainly originaly obtained from  [Unsplash](https://unsplash.com/) 
 
 
 
