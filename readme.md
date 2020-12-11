@@ -154,6 +154,15 @@ Deployed using Heroku accessed via the link below
 
    2. Synced folder on local machine to Github Repo via VsCode: https://github.com/Dermomurphy/Flask-Revuu-It
 
+   3. Set environment variables in env.py and on Heroku
+        ("IP" - "0.0.0.0")
+        ("PORT" -  "5000")
+        ("SECRET_KEY", <USER_SET>)
+        ("MONGO_URI" - <MONGOURI>)
+        ("MONGO_DBNAME", "revuu_data")
+        ("MAIL_USERNAME", <USER_EMAIL>)
+        ("MAIL_PASSWORD", <USER_PASSWORD>)
+
 
 ## Credits
 
