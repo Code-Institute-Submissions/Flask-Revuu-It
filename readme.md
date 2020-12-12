@@ -64,8 +64,10 @@ The mongoDB BSON based Collection uses the the online Cloud DB Atlas from Mongo 
  - reviews
  - users 
 
- ### Schema
- <img src="https://github.com/Dermomurphy/Flask-Revuu-It/blob/main/static/images/schmea.png" style="margin: 0;">
+ A Json representation of each collection can be found here [Schema JSON](https://github.com/Dermomurphy/Flask-Revuu-It/static/schema/)
+
+ ### Schema 
+ <img src="https://github.com/Dermomurphy/Flask-Revuu-It/blob/main/static/images/schema.png" style="margin: 0;">
  
 
 
@@ -122,6 +124,7 @@ The mongoDB BSON based Collection uses the the online Cloud DB Atlas from Mongo 
     - [HTML5](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5) - used for Hyper text markup language.
 13. ![CSS3](https://img.shields.io/static/v1?label=CSS&message=3&color=1572B6&logo=css3&logoColor=ffffff)
     - [CSS3](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS3) - Used for cascading stylesheets.
+14. - [Visual Paradigm](https://online.visual-paradigm.com/) - Schema Diagrams
 
 ## Testing
 ### Viewports Responsiveness
