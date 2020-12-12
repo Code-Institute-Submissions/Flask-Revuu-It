@@ -64,7 +64,7 @@ The mongoDB BSON based Collection uses the the online Cloud DB Atlas from Mongo 
  - reviews
  - users 
 
- A Json representation of each collection can be found here [Schema JSON](https://github.com/Dermomurphy/Flask-Revuu-It/static/schema/)
+ A Json representation of each collection can be found here [Schema JSON](https://github.com/Dermomurphy/Flask-Revuu-It/tree/main/static/schema)
 
  ### Schema 
  <img src="https://github.com/Dermomurphy/Flask-Revuu-It/blob/main/static/images/schema.png" style="margin: 0;">
@@ -170,27 +170,47 @@ Deployed using Heroku accessed via the link below
     - Admin user Can access Manage Categories section also.
 
   **Process**
-   1. Created a Github account at https://github.com My account: https://github.com/Dermomurphy
+   #### 1. Created a Github account at https://github.com My account: https://github.com/Dermomurphy
 
-   2. Synced folder on local machine to Github Repo via VsCode: https://github.com/Dermomurphy/Flask-Revuu-It automatic deployment on Heroku
-     - Configure Procfie to have web: python app.py
+   #### 2. Setup Heroku for hosting App.
+   1. Create a Heroku account
+   2. Create a new app [must have a unique name] and select your region
+   #### 3. Synced folder on local machine to Github Repo via VsCode: https://github.com/Dermomurphy/Flask-Revuu-It automatic deployment on Heroku
 
-   3. Set environment variables in env.py and on Heroku
-       -  ("IP", "0.0.0.0")
+     - Configure Procfile to have content - "web: python app.py" in order to deploy app using python on Heroku. 
+
+   #### 4. Set environment variables in env.py and on Heroku 
+   in order to deploy in Heroku set Config vars located in settings to below. Click Reveal config vars to input these variables.
+   Set a (KEY, VALUE)
+       -  ("IP","0.0.0.0")
        -  ("PORT" , "5000")
-       -  ("SECRET_KEY" ,  <USER_SET>)
-       -  ("MONGO_URI", <MONGOURI>)
-       -  ("MONGO_DBNAME" ,"revuu_data")
-       -  ("MAIL_USERNAME" , <USER_EMAIL>)
-       -  ("MAIL_PASSWORD" , <USER_PASSWORD>)
+       -  ("SECRET_KEY" ,  **<USER_SECRET-KEY>**)
+       -  ("MONGO_URI", mongodb+srv://root:**<USER_PASSWORD>**@**<USER_CLUSTER>**.2qobt.mongodb.net/**<USER_DB_NAME**?retryWrites=true&w=majority)
+       -  ("MONGO_DBNAME" ,**<USER_DB_NAME>**)  current 'revuu_data'
+       -  ("MAIL_USERNAME" , **<USER_EMAIL>**)
+       -  ("MAIL_PASSWORD" , **<USER_MAIL_PASSWORD>**)
 
-   4. Mail Config Settings
+  #### 5. Mail Config Settings
        - If you use Gmail as an smtp server you can login with your own username and password. Note third party app access must be granted
-       ### SMTP Flaskmail config - Can be found in app.py
+       ### SMTP Flaskmail config - Can be found in [app.py](https://github.com/Dermomurphy/Flask-Revuu-It/blob/main/app.py)
+   
+  #### 6: Requirements
+  1. Using a terminal window command prompt input  **pip3 freeze --local > requirements.txt** to create a requirements.txt file in order for Herku to install all requirements necessary.
+
+
+  #### 7: Pushing files to Heroku hosted 
+  1. In the terminal window type in **heroku login** and fill in your heroku credentials and password
+  2. Commit all your files and type in the same terminal window **git push heroku master**. 
+
+  #### 8: Open Deployed App in Heroku
+  1. Click on **Open app** in the Heroku account, the application will open in a new tab
+  2. The live hosted app can be seen in the browser
+
+  #### 9: How to Run the App locally
+  1. Open your terminal command window
+  2. Type in **python3 app.py** to run the app. Open a web browser and point it to localhost 0.0.0.0:5000 (port 5000)
        
   
-
-
 
 ## Credits
 
