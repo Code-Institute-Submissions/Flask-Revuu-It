@@ -64,14 +64,9 @@ The mongoDB BSON based Collection uses the the online Cloud DB Atlas from Mongo 
  - reviews
  - users 
 
- ### Categories
- {
-    "_id": {
-        "$oid": "5fb1d86ba254dd604d6308f0"
-    },
-    "category_name": "Bar",
-    "tag_style": "is-info"
-}
+ ### Schema
+ <img src="https://github.com/Dermomurphy/Flask-Revuu-It/blob/main/static/images/schmea.png" style="margin: 0;">
+ 
 
 
 ## Features
