@@ -64,7 +64,7 @@ The mongoDB BSON based Collection uses the the online Cloud DB Atlas from Mongo 
  - reviews
  - users 
 
- A Json representation of each collection can be found here [Schema JSON](https://github.com/Dermomurphy/Flask-Revuu-It/tree/main/static/schema)
+ A JSON representation of each collection can be found here [Schema JSON](https://github.com/Dermomurphy/Flask-Revuu-It/tree/main/static/schema)
 
  ### Schema 
  <img src="https://github.com/Dermomurphy/Flask-Revuu-It/blob/main/static/images/schema.png" style="margin: 0;">
@@ -117,14 +117,13 @@ The mongoDB BSON based Collection uses the the online Cloud DB Atlas from Mongo 
 7.  ![GitHub](https://img.shields.io/badge/GitHub-Git%20repository%20hosting%20service-lightgrey)
     - [GitHub](https://github.com/) - Web-based hosting service for version control using Git.
 8.  [W3CMarkupValidation](https://validator.w3.org/) Tools to assess CSS and HTML validation.
-9.  [Metatags](https://metatags.io/) Generation of Meta tag content for social media sharing and SEO. ***TODO***
-10. [GoogleFonts](https://fonts.google.com/) - font families from Google.
-11. [CKEDITOR](https://www.ckeditor.com/) - Javascript library for adding rich content editing abilities.
-12. ![HTML5](https://img.shields.io/static/v1?label=HTML&message=5&color=E34F26&logo=html5&logoColor=ffffff)
+9. [GoogleFonts](https://fonts.google.com/) - font families from Google.
+10. [CKEDITOR](https://www.ckeditor.com/) - Javascript library for adding rich content editing abilities.
+11. ![HTML5](https://img.shields.io/static/v1?label=HTML&message=5&color=E34F26&logo=html5&logoColor=ffffff)
     - [HTML5](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5) - used for Hyper text markup language.
-13. ![CSS3](https://img.shields.io/static/v1?label=CSS&message=3&color=1572B6&logo=css3&logoColor=ffffff)
+12. ![CSS3](https://img.shields.io/static/v1?label=CSS&message=3&color=1572B6&logo=css3&logoColor=ffffff)
     - [CSS3](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS3) - Used for cascading stylesheets.
-14. - [Visual Paradigm](https://online.visual-paradigm.com/) - Schema Diagrams
+13. - [Visual Paradigm](https://online.visual-paradigm.com/) - Schema Diagrams
 
 ## Testing
 ### Viewports Responsiveness
@@ -179,12 +178,12 @@ Deployed using Heroku accessed via the link below
 
      - Configure Procfile to have content - "web: python app.py" in order to deploy app using python on Heroku. 
 
-   #### 4. Set environment variables in env.py and on Heroku 
+   #### 4. Set environment variables in env.py locally and on Heroku 
    in order to deploy in Heroku set Config vars located in settings to below. Click Reveal config vars to input these variables.
    Set a (KEY, VALUE)
        -  ("IP","0.0.0.0")
        -  ("PORT" , "5000")
-       -  ("SECRET_KEY" ,  **<USER_SECRET-KEY>**)
+       -  ("SECRET_KEY" ,  **<USER_SECRETKEY>**)
        -  ("MONGO_URI", mongodb+srv://root:**<USER_PASSWORD>**@**<USER_CLUSTER>**.2qobt.mongodb.net/**<USER_DB_NAME**?retryWrites=true&w=majority)
        -  ("MONGO_DBNAME" ,**<USER_DB_NAME>**)  current 'revuu_data'
        -  ("MAIL_USERNAME" , **<USER_EMAIL>**)
@@ -195,7 +194,7 @@ Deployed using Heroku accessed via the link below
        ### SMTP Flaskmail config - Can be found in [app.py](https://github.com/Dermomurphy/Flask-Revuu-It/blob/main/app.py)
    
   #### 6: Requirements
-  1. Using a terminal window command prompt input  **pip3 freeze --local > requirements.txt** to create a requirements.txt file in order for Herku to install all requirements necessary.
+  1. Using a terminal window command prompt input  **pip3 freeze --local > requirements.txt** to create a requirements.txt file in order for Heroku to install all requirements necessary.
 
 
   #### 7: Pushing files to Heroku hosted 
@@ -203,15 +202,14 @@ Deployed using Heroku accessed via the link below
   2. Commit all your files and type in the same terminal window **git push heroku master**. 
 
   #### 8: Open Deployed App in Heroku
-  1. Click on **Open app** in the Heroku account, the application will open in a new tab
-  2. The live hosted app can be seen in the browser
+  1. Click on **Open app** in the Heroku account, the application will open in a new tab within the browser
+  
 
   #### 9: How to Run the App locally
   1. Open your terminal command window
   2. Type in **python3 app.py** to run the app. Open a web browser and point it to localhost 0.0.0.0:5000 (port 5000)
        
   
-
 ## Credits
 
 ### Content
