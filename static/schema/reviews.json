@@ -1,0 +1,15 @@
+{
+    "_id": {
+        "$oid": "5fb465e341b4da0949f414c8"
+    },
+    "category_name": "point of interest",
+    "review_title": "Dublin Castle",
+    "review_description": "<h1>What a Place to Visit!</h1>\r\n\r\n<p>Erected in the early thirteenth century on the site of a Viking settlement, Dublin Castle served for centuries as the headquarters of English, and later British, administration in Ireland. In 1922, following Ireland&rsquo;s independence, Dublin Castle was handed over to the new Irish government. It is now a major government complex and a key tourist attraction. We hope you enjoy your visit.</p>\r\n",
+    "ts": 1607699978.218909,
+    "star_rating": 5,
+    "images": {
+        "image_url": "https://dublin-360.com/wp-content/uploads/2020/10/k-mitch-hodge-LG-PdOvpebw-unsplash-1500x1039.jpg"
+    },
+    "created_by": "dermotmurphy",
+    "agree_terms": "on"
+}

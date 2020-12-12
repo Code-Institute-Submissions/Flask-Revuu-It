@@ -1,0 +1,7 @@
+{
+    "_id": {
+        "$oid": "5fb1d86ba254dd604d6308f0"
+    },
+    "category_name": "Bar",
+    "tag_style": "is-info"
+}

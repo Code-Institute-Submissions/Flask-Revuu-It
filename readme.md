@@ -57,6 +57,23 @@ Link to Initial concept:
 - [Concept](https://dermomurphy.github.io/MS3-Mockup/)
   - Bulma framework was used on this project as I had already used Materialize in the MS2 Project. Bulma does lack some UX features that Materialise has like sticky Nav. I still feel it was beneficial to learn a new framework even though it may be lacking in some areas.
 
+## Database
+The mongoDB BSON based Collection uses the the online Cloud DB Atlas from Mongo DB trial. The database is based off one database called revuu_data filled with 4 collections: Namely
+ - categories
+ - newsletter
+ - reviews
+ - users 
+
+ ### Categories
+ {
+    "_id": {
+        "$oid": "5fb1d86ba254dd604d6308f0"
+    },
+    "category_name": "Bar",
+    "tag_style": "is-info"
+}
+
+
 ## Features
 
 **Main Review Page** - Review Content with Header Image on each review, Card title, star rating visible in number of stars and review content description.
@@ -92,8 +109,8 @@ Link to Initial concept:
     - Built with Bulma CSS framework. 
 2. ![jQuery](https://img.shields.io/badge/jQuery-3.5.1-yellowgreen)
     - [jQuery](https://jquery.com/) - is a fast, small, and feature-rich JavaScript library. It makes things like HTML document traversal and manipulation, event handling, animation. The project uses **JQuery** to simplify DOM manipulation as part of Materialize framework.
-3. [MongoDB](https://www.mongodb.com/)
-4. [Flask](https://flask.palletsprojects.com/en/1.1.x/)
+3.  [MongoDB](https://www.mongodb.com/) - Cloud based Database using BSON format.
+4.  [Flask](https://flask.palletsprojects.com/en/1.1.x/) - Python app framework
 
 4.  [Visual Studio Code](https://code.visualstudio.com/): Programming code editor created by Microsoft.
 5.  ![Chrome Developer Tools](https://img.shields.io/badge/Chrome%20Dev%20Tools-Google%20Chrome-blue)
@@ -106,9 +123,9 @@ Link to Initial concept:
 9.  [Metatags](https://metatags.io/) Generation of Meta tag content for social media sharing and SEO. ***TODO***
 10. [GoogleFonts](https://fonts.google.com/) - font families from Google.
 11. [CKEDITOR](https://www.ckeditor.com/) - Javascript library for adding rich content editing abilities.
-13. ![HTML5](https://img.shields.io/static/v1?label=HTML&message=5&color=E34F26&logo=html5&logoColor=ffffff)
+12. ![HTML5](https://img.shields.io/static/v1?label=HTML&message=5&color=E34F26&logo=html5&logoColor=ffffff)
     - [HTML5](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5) - used for Hyper text markup language.
-14. ![CSS3](https://img.shields.io/static/v1?label=CSS&message=3&color=1572B6&logo=css3&logoColor=ffffff)
+13. ![CSS3](https://img.shields.io/static/v1?label=CSS&message=3&color=1572B6&logo=css3&logoColor=ffffff)
     - [CSS3](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS3) - Used for cascading stylesheets.
 
 ## Testing

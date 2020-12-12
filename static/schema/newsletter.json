@@ -1,0 +1,11 @@
+{
+    "_id": {
+        "$oid": "5fb9586780eb88bb490dc5c3"
+    },
+    "first_name": "dave",
+    "last_name": "test",
+    "newsletter_email": "dermotmurphy@gmail.com",
+    "newsletter_terms": "on",
+    "registered": "on",
+    "created_by": "admin"
+}
