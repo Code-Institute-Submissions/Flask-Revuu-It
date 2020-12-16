@@ -324,7 +324,7 @@ Deployed using Heroku accessed via the link below
             * newsletter_terms: (String)
             * registered: (String)
             * created_by: (String)         
-    5. Adding local enviroment varibales:
+   5. Adding local enviroment varibales:
     - Go to MongoDB and copy the srv link to your database (go to "Command Line Tools", "Connect Instruction", "Connect your application" and copy the link).
     - To the env.py add the secret key and MongoDB URI:
     - add the environment variables below to your env.py file:
