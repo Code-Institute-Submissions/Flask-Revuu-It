@@ -3,7 +3,8 @@ MS3. Project Code Institute - Flask-Revuu-IT - Flask Framework Review app with L
 
 <img src="https://github.com/Dermomurphy/Flask-Revuu-It/blob/main/static/images/amIresponsiveRevuuIT.png" style="margin: 0;">
 
-### [GitHub Live Heroku Hosted Website](https://github.com/Dermomurphy/Flask-Revuu-It)
+### [GitHub Repo](https://github.com/Dermomurphy/Flask-Revuu-It)
+### [Heroku Deployed App](https://flask-revuu-it.herokuapp.com/)
 
 Milestone 3 Project: Code Institute: Revuu-IT
 
@@ -184,7 +185,7 @@ Testing done on VSCode Using Live server - Mobile responsiveness also tested liv
 - Categories are listed on the left sidebar once a user is logged in. Generated from Catgories Collection.
 
 #### Create Operations:
--  When a user signs up, a new user is created in the users collection with username password stored in sha256 format and their associated email.
+-  When a user signs up, a new user is created in the users collection with username password stored in sha256 format and their associated email and timestamp.
 -  When a user adds a new Review the relevant fields are populated from the Add Review View into the database.
 -  When the admin user creates a new category  and tag style this is added to the categories collection.
 -  MongoDB autopopulates each document with a unique ObjectID BSON object (_id)
