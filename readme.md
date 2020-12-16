@@ -41,7 +41,7 @@ Milestone 3 Project: Code Institute: Revuu-IT
 A Site developed for MS3 Project in Code Institute. The site consists of a review app based on the Flask Framework.
 Users may Register with their own username, email and password. Data is stored in an Atlas MongoDb cluster. Once registered the user may login. A logged in user has the ability to add a new review based on a category of choice. The user may only edit or Delete their own reviews.
 The Admin user has the ability to add edit and delete categories and any reviews they may submit.
-For demonstration purposese the admin can login using the details below:
+
 
 ---
 ## UX
