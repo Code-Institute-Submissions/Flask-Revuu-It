@@ -43,7 +43,7 @@ Users may Register with their own username, email and password. Data is stored i
 The Admin user has the ability to add edit and delete categories and any reviews they may submit.
 For demonstration purposese the admin can login using the details below:
 
- 
+---
 ## UX
 
 ### User Stories:
@@ -80,7 +80,7 @@ Link to Initial concept:
 - [Concept](https://dermomurphy.github.io/MS3-Mockup/)
   - Bulma framework was used on this project as I had already used Materialize in the MS2 Project. Bulma does lack some UX features that Materialise has like sticky Nav. I still feel it was beneficial to learn a new framework even though it may be lacking in some areas.
 
-## Database
+### Database
 The mongoDB BSON based Collection uses the the online Cloud DB Atlas from Mongo DB trial. The database is based off one database called revuu_data filled with 4 collections: Namely
  - categories
  - newsletter
@@ -93,7 +93,7 @@ The mongoDB BSON based Collection uses the the online Cloud DB Atlas from Mongo 
  <img src="https://github.com/Dermomurphy/Flask-Revuu-It/blob/main/static/images/schema.png" style="margin: 0;">
  
 
-
+---
 ## Features
 
 **Main Review Page** - Review Content with Header Image on each review, Card title, star rating visible in number of stars and review content description.
@@ -122,7 +122,7 @@ The mongoDB BSON based Collection uses the the online Cloud DB Atlas from Mongo 
 
 ### Features Left to Implement
 - Reply to Reviews section - Allow the user to comment on each review.
-
+---
 ## Technologies Used
 
 1. [Bulma](https://bulma.io)
@@ -150,7 +150,7 @@ The mongoDB BSON based Collection uses the the online Cloud DB Atlas from Mongo 
 14. [Jinja](https://jinja.palletsprojects.com/en/2.11.x/) - Jinja - Templating language.
 15. [Python V3.6.9](https://www.python.org/) - Python Programming language.
 
-
+---
 ## Testing
 ### Viewports Responsiveness
 http://ami.responsivedesign.is/  Used to Test site across multiple viewports:
@@ -228,7 +228,7 @@ Python code was checked for validity using PEP8 compliance : [PEP8 Checker](http
  - UserID in users should match created_by in reviews collection not the username for better verificiation and collection data retrieval.
  - Category ID should match to Review Category_id  instead of category_name for better data retrieval.
 
-
+---
 
 ## Deployment
 Deployed using Heroku accessed via the link below
@@ -339,7 +339,7 @@ Deployed using Heroku accessed via the link below
 
 
    6. Type in `python3 app.py` in the CLI to run the app. Open a web browser and point it to localhost 0.0.0.0:5000 (port 5000)
-       
+---     
   
 ## Credits
 
