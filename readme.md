@@ -291,9 +291,9 @@ Deployed using Heroku accessed via the link below
    2. Syncing from Github - As outlined above in Process 3
    3. Install the requirements by typing `pip3 install -r requirements.txt` in your CLI
    4. Create a Database in MongoDB:
-        Create or login to a MongoDB account.
-        Create a new project Name.
-        Add a new cluster to this project give it a unique name.
+        - Create or login to a MongoDB account.
+        - Create a new project Name.
+        - Add a new cluster to this project give it a unique name.
         - create a new database, name it accordingly (revuu_data) and create these three collections:
             * categories
             * users
