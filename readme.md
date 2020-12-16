@@ -184,7 +184,7 @@ Testing done on VSCode Using Live server - Mobile responsiveness also tested liv
 - Categories are listed on the left sidebar once a user is logged in. Generated from Catgories Collection.
 
 #### Create Operations:
--  When a user signs up, a new user is created in the user collection with username password stored in sha256 format and their associated email.
+-  When a user signs up, a new user is created in the users collection with username password stored in sha256 format and their associated email.
 -  When a user adds a new Review the relevant fields are populated from the Add Review View into the database.
 -  When the admin user creates a new category  and tag style this is added to the categories collection.
 -  MongoDB autopopulates each document with a unique ObjectID BSON object (_id)
@@ -204,8 +204,9 @@ Testing done on VSCode Using Live server - Mobile responsiveness also tested liv
 Python code was checked for validity using PEP8 compliance : [PEP8 Checker](http://pep8online.com/)
 
 ### Issues
- - User can add infinte emails to Database if already exists.
+ - User can add infinte newsletter singup emails to Database if already exists in database.
  - Admin needs to be able to delete all Reviews.
+ - Should have initialised python environment in a penv to minimise requirements file
 
 
 
@@ -215,7 +216,7 @@ Deployed using Heroku accessed via the link below
     - all content is navigatable via this webpage. You must register and login to access adding/editing reviews
     - Admin user Can access Manage Categories section also.
 
-  **Process**
+  ### Process
    #### 1: Created a Github account at https://github.com My account: https://github.com/Dermomurphy
 
    #### 2: Setup Heroku for hosting App.
