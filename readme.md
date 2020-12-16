@@ -156,7 +156,6 @@ Testing done on VSCode Using Live server.- Mobile responsiveness also tested liv
 - Admin Menu for Categories editing and adding showing and functions for Admin user.
 - Popular Reviews shows reviews with rating > 3
 - Recent Reviews shows the latest reviews added chronologically.
-- 
  
 **Media Queries**
 Media Queries Break Screens based on Bulma Framework Breakpoints :
@@ -181,11 +180,10 @@ Deployed using Heroku accessed via the link below
    #### 2. Setup Heroku for hosting App.
    1. Create a Heroku account
    2. Create a new app [must have a unique name] and select your region
-   #### 3. Synced folder on local machine to Github Repo via VsCode: https://github.com/Dermomurphy/Flask-Revuu-It automatic deployment on Heroku
-
+   #### 3. Synced folder on local machine to Github Repo via VsCode: https://github.com/Dermomurphy/Flask-Revuu-It automatic deployment on Heroku.
      - Configure Procfile to have content - "web: python app.py" in order to deploy app using python on Heroku. 
 
-   #### 4. Set environment variables in env.py locally and on Heroku 
+   #### 4. Set environment variables in env.py locally and on Heroku.
    in order to deploy in Heroku set Config vars located in settings to below. Click Reveal config vars to input these variables.
    Set a (KEY, VALUE)
        -  ("IP","0.0.0.0")
