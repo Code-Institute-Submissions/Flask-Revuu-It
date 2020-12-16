@@ -332,7 +332,7 @@ Deployed using Heroku accessed via the link below
         
         
 
-    - Adding local enviroment varibales:
+    5. Adding local enviroment varibales:
 
         Go to MongoDB and copy the srv link to your database (go to "Command Line Tools", "Connect Instruction", "Connect your application" and copy the link).
         To the env.py add the secret key and MongoDB URI:
@@ -347,7 +347,7 @@ Deployed using Heroku accessed via the link below
 
 
 
-   4. Type in `python3 app.py` in the CLI to run the app. Open a web browser and point it to localhost 0.0.0.0:5000 (port 5000)
+   6. Type in `python3 app.py` in the CLI to run the app. Open a web browser and point it to localhost 0.0.0.0:5000 (port 5000)
        
   
 ## Credits
