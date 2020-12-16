@@ -12,6 +12,8 @@ Milestone 3 Project: Code Institute: Revuu-IT
 1. [**Project overview**](#project-overview)
 2. [**UX**](#ux)
    - [**Concept**](#concept)
+   - [**Database**](#database)
+   - - [**Schema**](#schema)
  
 3. [**Features**](#features)
    - [**Features Left to Implement**](#Features-Left-to-Implement)
@@ -21,6 +23,7 @@ Milestone 3 Project: Code Institute: Revuu-IT
 5. [**Testing**](#testing)
    - [**Viewports/Responsiveness**](#Viewports-Responsiveness)
    - [**Functional Testing**](#funtional-testing)
+   - [**Database CRUD Operations**](#database-crud-operations)
  
 6. [**Deployment**](#deployment)
  
@@ -105,7 +108,7 @@ The mongoDB BSON based Collection uses the the online Cloud DB Atlas from Mongo 
 1. [Bulma](https://bulma.io)
     - Built with Bulma CSS framework. 
 2. ![jQuery](https://img.shields.io/badge/jQuery-3.5.1-yellowgreen)
-    - [jQuery](https://jquery.com/) - is a fast, small, and feature-rich JavaScript library. It makes things like HTML document traversal and manipulation, event handling, animation. The project uses **JQuery** to simplify DOM manipulation as part of Materialize framework.
+    - [jQuery](https://jquery.com/) - is a fast, small, and feature-rich JavaScript library. It makes things like HTML document traversal and manipulation, event handling, animation. The project uses **JQuery** to simplify DOM manipulation.
 3.  [MongoDB](https://www.mongodb.com/) - Cloud based Database using BSON format.
 4.  [Flask](https://flask.palletsprojects.com/en/1.1.x/) - Python app framework
 
@@ -117,13 +120,16 @@ The mongoDB BSON based Collection uses the the online Cloud DB Atlas from Mongo 
 7.  ![GitHub](https://img.shields.io/badge/GitHub-Git%20repository%20hosting%20service-lightgrey)
     - [GitHub](https://github.com/) - Web-based hosting service for version control using Git.
 8.  [W3CMarkupValidation](https://validator.w3.org/) Tools to assess CSS and HTML validation.
-9. [GoogleFonts](https://fonts.google.com/) - font families from Google.
+9.  [GoogleFonts](https://fonts.google.com/) - font families from Google.
 10. [CKEDITOR](https://www.ckeditor.com/) - Javascript library for adding rich content editing abilities.
 11. ![HTML5](https://img.shields.io/static/v1?label=HTML&message=5&color=E34F26&logo=html5&logoColor=ffffff)
     - [HTML5](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5) - used for Hyper text markup language.
 12. ![CSS3](https://img.shields.io/static/v1?label=CSS&message=3&color=1572B6&logo=css3&logoColor=ffffff)
     - [CSS3](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS3) - Used for cascading stylesheets.
 13. - [Visual Paradigm](https://online.visual-paradigm.com/) - Schema Diagrams
+14. - [Jinja](https://jinja.palletsprojects.com/en/2.11.x/) - Jinja - Templating language.
+15. - [Python V3.6.9](https://www.python.org/) - Python Programming language.
+
 
 ## Testing
 ### Viewports Responsiveness
@@ -142,10 +148,10 @@ Mobile
     320x480px scaled down to scale(0.219) 
 
 ### Functional Testing 
-Testing done on VSCode Using Live server.- Mobile responsiveness also tested live via Heroku Live Hosted app.
+Testing done on VSCode Using Live server - Mobile responsiveness also tested live via Heroku Live Hosted app.
 
 - All page/card/footer links were tested to open.
-- Database CRUD operations using PyMongo
+- Database CRUD operations using PyMongo.
 - Navigation Buttons and Navbar links tested to navigate to specific pages.
 - Various screen sizes also tested from large screen to mobile.
 - Scrollable categories tested for each section.
@@ -156,6 +162,34 @@ Testing done on VSCode Using Live server.- Mobile responsiveness also tested liv
 - Admin Menu for Categories editing and adding showing and functions for Admin user.
 - Popular Reviews shows reviews with rating > 3
 - Recent Reviews shows the latest reviews added chronologically.
+- Newsletter singup adding to DB and Email confirmation sent to user.
+- Logout Button only shown to logged in users.
+- Only Logged in users can update or delete their relevant reviews.
+- Only Admin can see Categories section and update/Add/Delete Categories.
+
+### Database CRUD Operations
+
+#### Read Operations:
+- On the main Get_reviews page an article container is loaded for each review document in the database
+- On the popular reviews page an article container is loaded for each review document in the database > 3 stars.
+- On the recent reviews page lists all Reviews added chronologically sorted by most recent.
+- See All Reviews on Users Profile page lists all Reviews added by that specific users Username.
+- Categories are listed on the left sidebar once a user is logged in. Generated from Catgories Collection.
+
+#### Create Operations:
+-  When a user signs up, a new user is created in the user collection with username password stored in sha256 format and their associated email.
+-  When a user adds a new Review the relevant fields are populated from the Add Review View into the database.
+-  When the admin user creates a new category  and tag style this is added to the categories collection.
+-  MongoDB autopopulates each document with a unique ObjectID BSON object (_id)
+
+#### Update Operations:
+- When a user tries to Edit one of their reviews this allows them to edit any data added within the Edit Review Form. 
+- An edited review updates the relevant fields within the database and the new content is shown on the main reviews page.
+- The Admin user can edit any Categories already listed , change the Category name and tag style associated with it.
+
+#### Delete Operations:
+- When a user deletes their review the review is removed from the database.
+- When the Admin deletes a category the category is removed from the database.
  
 **Media Queries**
 Media Queries Break Screens based on Bulma Framework Breakpoints :
@@ -165,6 +199,8 @@ Media Queries Break Screens based on Bulma Framework Breakpoints :
 **PEP8 Compliance**
 Python code was checked for PEP8 compliance using [PEP8 Checker](http://pep8online.com/)
 **Issues**
+ - User can add infinte emails to Database if already exists.
+ - Admin needs to be able to delete all Reviews.
 
 
 
@@ -224,7 +260,7 @@ Deployed using Heroku accessed via the link below
 - Main Text Written by Dermot Murphy
 - Dublin 360 - [Dublin 360 website](https://dublin-360.com/) for content and images also. (My own Website)
 - Google Fonts for font styles; https://fonts.google.com/
-- [Bulma CSS Framework](https://bulma.io/)
+- [Bulma CSS Framework + Themes](https://bulma.io/)
 - W3schools.com: for code used on contact form page and implementation if necessary.[W3Schools](https://www.w3schools.com/)
 
 ### Media
