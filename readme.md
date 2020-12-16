@@ -320,7 +320,7 @@ Deployed using Heroku accessed via the link below
         username: (String)
         email: (String)
         password: (String)
-        ts: (String)
+        ts: (double)
     
     -  Populate the newsletter collection with the key value pairs outlined below:
         first_name: (String)
