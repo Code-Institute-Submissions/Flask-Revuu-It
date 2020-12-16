@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Revuu-IT</title>
+    <!-- Icons -->
     <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static',filename='images/favicon/apple-touch-icon.png') }}">
     <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static',filename='images/favicon/favicon-32x32.png') }}">
     <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static',filename='images/favicon/favicon-16x16.png') }}">
@@ -23,6 +24,7 @@
 </head>
 
 <body>
+    <!--Main Navbar -->
     <nav class="navbar is-white topNav">
         <div class="container">
             <div class="navbar-brand">
@@ -106,11 +108,13 @@
     </section>
     <!-- Main Container -->
     <section class="container is-fluid">
+        <!-- Category Tags Sidebar-->
         <div class="columns  is-centered">
             {% if session.user %}
                 {% block menutags %}
                 {% endblock %}
             {% endif %}
+            <!-- Main Review Content-->
             <div class="column is-10">
                 <div class="box content">
                     {% block content %}
@@ -157,6 +161,7 @@
         </div>
         </div>
     </footer>
+    <!-- Custom Javascript-->
     <script type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}"></script>
     <!-- Fontawesome Icons-->
     <script defer src="https://use.fontawesome.com/releases/v5.14.0/js/all.js"></script>
