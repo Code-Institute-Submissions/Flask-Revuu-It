@@ -91,7 +91,7 @@ def register():
     return render_template("register.html")
 
 
-# Login decorator - To disable pages for non logged in users.
+# Login decorator - To disable pages for non logged in users. From Flask Documentation, modified to suit 
 def login_required(f):
     @wraps(f)
     def decorated_function(*args, **kwargs):
