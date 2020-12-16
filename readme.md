@@ -348,7 +348,7 @@ Deployed using Heroku accessed via the link below
 - Dublin 360 - [Dublin 360 website](https://dublin-360.com/) for content and images also. (My own Website)
 - Google Fonts for font styles; https://fonts.google.com/
 - [Bulma CSS Framework + Themes](https://bulma.io/) Kanban + Forum Themes css used 
-- W3schools.com: for code used on contact form page and implementation if necessary.[W3Schools](https://www.w3schools.com/)
+- W3schools.com:[W3Schools](https://www.w3schools.com/)
 
 ### Media
 - The photos used in this site were mainly originaly obtained from  [Unsplash](https://unsplash.com/) 
