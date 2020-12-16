@@ -244,15 +244,15 @@ Deployed using Heroku accessed via the link below
    2. Create a new app [must have a unique name] and select your region
 
    #### 3: Synced folder on local machine to Github Repo via VsCode: https://github.com/Dermomurphy/Flask-Revuu-It automatic deployment on Heroku.
-     -  Synced folder on local machine to Github Repo via VsCode: https://github.com/Dermomurphy/Flask-Revuu-It
+   -  Synced folder on local machine to Github Repo via VsCode: https://github.com/Dermomurphy/Flask-Revuu-It
 
-     - To run this code on your local machine, you would go to my respository at https://github.com/Dermomurphy/Flask-Revuu-It and on the home page on the right hand side just above all the files, you will see a green button that says, "Clone or download", this button will give you options to clone with HTTPS, open in desktop or download as a zip file. Then --> click the clipboard item to copy the Https address of the repo.
-     **Open Git Bash/Terminal:**
-     CD into the working directory to the location where you want the cloned directory to be made.you can use mkdir command to make a new directory, then cd into it.Type `git clone`, and then paste the URL: https://github.com/Dermomurphy/Flask-Revuu-It.git Press Enter. The clone is created.
-     For more information about the above process; https://help.github.com/en/github/using-git/which-remote-url-should-i-use
+   - To run this code on your local machine, you would go to my respository at https://github.com/Dermomurphy/Flask-Revuu-It and on the home page on the right hand side just above all the files, you will see a green button that says, "Clone or download", this button will give you options to clone with HTTPS, open in desktop or download as a zip file. Then --> click the clipboard item to copy the Https address of the repo.
+   **Open Git Bash/Terminal:**
+   CD into the working directory to the location where you want the cloned directory to be made.you can use mkdir command to make a new directory, then cd into it.Type `git clone`, and then paste the URL: https://github.com/Dermomurphy/Flask-Revuu-It.git Press Enter. The clone is created.
+   For more information about the above process; https://help.github.com/en/github/using-git/which-remote-url-should-i-use
 
 
-     - Configure Procfile to have content `web: python app.py` in order to deploy app using python on Heroku. 
+   - Configure Procfile to have content `web: python app.py` in order to deploy app using python on Heroku. 
 
    #### 4: Set environment variables in env.py locally and on Heroku config variables.
    - Create an env.py file in the apps root directory.
