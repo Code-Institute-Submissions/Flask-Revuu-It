@@ -332,7 +332,7 @@ Deployed using Heroku accessed via the link below
         * os.environ.setdefault("IP", "0.0.0.0")
         * os.environ.setdefault("PORT", "5000")
         * os.environ.setdefault("MONGODB_URI", "mongodb+srv://root:**<USER_PASSWORD>**@**<USER_CLUSTER>**.tto0e.mongodb.net/**<USER_DB_NAME>**?retryWrites=true&w=majority")
-        * os.environ.setdefailt("SECRET_KEY"], <SECRET_KEY>)
+        * os.environ.setdefault("SECRET_KEY"], <SECRET_KEY>)
         * os.environ.setdefault("MAIL_USERNAME", <USER_EMAIL>)
         * os.environ.setdefault("MAIL_PASSWORD", <USERMAIL_PASSWORD>)
 
