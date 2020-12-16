@@ -180,12 +180,14 @@ Deployed using Heroku accessed via the link below
    #### 2: Setup Heroku for hosting App.
    1. Create a Heroku account
    2. Create a new app [must have a unique name] and select your region
+
    #### 3: Synced folder on local machine to Github Repo via VsCode: https://github.com/Dermomurphy/Flask-Revuu-It automatic deployment on Heroku.
-     - Configure Procfile to have content - "web: python app.py" in order to deploy app using python on Heroku. 
+   - Configure Procfile to have content `web: python app.py` in order to deploy app using python on Heroku. 
 
    #### 4: Set environment variables in env.py locally and on Heroku.
-   in order to deploy in Heroku set Config vars located in settings to below. Click Reveal config vars to input these variables.
-   Set a (KEY, VALUE):
+   In order to deploy in Heroku set Config vars located in settings to below. Click Reveal config vars to input these variables.
+   
+    ## Set a (KEY, VALUE):
     - ("IP","0.0.0.0")
     - ("PORT" , "5000")
     - ("SECRET_KEY" ,  **<USER_SECRETKEY>**)
@@ -194,26 +196,26 @@ Deployed using Heroku accessed via the link below
     - ("MAIL_USERNAME" , **<USER_EMAIL>**)
     - ("MAIL_PASSWORD" , **<USER_MAIL_PASSWORD>**)
 
-    #### 5: Mail Config Settings
+    #### 5: Mail Config Settings.
        - If you use Gmail as an smtp server you can login with your own username and password. 
        - Note third party app access must be granted.
-       - SMTP Flaskmail config - Can be found in [app.py](https://github.com/Dermomurphy/Flask-Revuu-It/blob/main/app.py)
+       - SMTP Flaskmail config :Can be found in [app.py](https://github.com/Dermomurphy/Flask-Revuu-It/blob/main/app.py)
    
-    #### 6: Requirements
-  1. Using a terminal window command prompt input  `pip3 freeze --local > requirements.txt` to create a requirements.txt file in order for Heroku to install all requirements necessary.
+    #### 6: Requirements.
+    1. Using a terminal window command prompt input  `pip3 freeze --local > requirements.txt` to create a requirements.txt file in order for Heroku to install all requirements necessary.
 
 
-    #### 7: Pushing files to Heroku hosted 
-  1. In the terminal window type in **heroku login** and fill in your heroku credentials and password
-  2. Commit all your files and type in the same terminal window **git push heroku master**. 
+    #### 7: Pushing files to Heroku hosted. 
+    1. In the terminal window type in **heroku login** and fill in your heroku credentials and password
+    2. Commit all your files and type in the same terminal window **git push heroku master**. 
 
-    #### 8: Open Deployed App in Heroku
-  1. Click on **Open app** in the Heroku account, the application will open in a new tab within the browser
+    #### 8: Open Deployed App in Heroku.
+    1. Click on **Open app** in the Heroku account, the application will open in a new tab within the browser
   
 
-    #### 9: How to Run the App locally
-  1. Open your terminal command window
-  2. Type in `python3 app.py` to run the app. Open a web browser and point it to localhost 0.0.0.0:5000 (port 5000)
+    #### 9: How to Run the App locally.
+    1. Open your terminal command window
+    2. Type in `python3 app.py` to run the app. Open a web browser and point it to localhost 0.0.0.0:5000 (port 5000)
        
   
 ## Credits
