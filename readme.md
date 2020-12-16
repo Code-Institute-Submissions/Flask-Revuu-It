@@ -186,13 +186,13 @@ Deployed using Heroku accessed via the link below
    #### 4: Set environment variables in env.py locally and on Heroku.
    in order to deploy in Heroku set Config vars located in settings to below. Click Reveal config vars to input these variables.
    Set a (KEY, VALUE):
-    -  ("IP","0.0.0.0")
-    -  ("PORT" , "5000")
-    -  ("SECRET_KEY" ,  **<USER_SECRETKEY>**)
-    -  ("MONGO_URI", mongodb+srv://root:**<USER_PASSWORD>**@**<USER_CLUSTER>**.2qobt.mongodb.net/**<USER_DB_NAME**?retryWrites=true&w=majority)
-    -  ("MONGO_DBNAME" ,**<USER_DB_NAME>**)  current 'revuu_data'
-    -  ("MAIL_USERNAME" , **<USER_EMAIL>**)
-    -  ("MAIL_PASSWORD" , **<USER_MAIL_PASSWORD>**)
+    - ("IP","0.0.0.0")
+    - ("PORT" , "5000")
+    - ("SECRET_KEY" ,  **<USER_SECRETKEY>**)
+    - ("MONGO_URI", mongodb+srv://root:**<USER_PASSWORD>**@**<USER_CLUSTER>**.2qobt.mongodb.net/**<USER_DB_NAME**?retryWrites=true&w=majority)
+    - ("MONGO_DBNAME" ,**<USER_DB_NAME>**)  current 'revuu_data'
+    - ("MAIL_USERNAME" , **<USER_EMAIL>**)
+    - ("MAIL_PASSWORD" , **<USER_MAIL_PASSWORD>**)
 
     #### 5: Mail Config Settings
        - If you use Gmail as an smtp server you can login with your own username and password. 
