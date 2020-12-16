@@ -4,7 +4,7 @@ MS3. Project Code Institute - Flask-Revuu-IT - Flask Framework Review app with L
 <img src="https://github.com/Dermomurphy/Flask-Revuu-It/blob/main/static/images/amIresponsiveRevuuIT.png" style="margin: 0;">
 
 ### [GitHub Repo](https://github.com/Dermomurphy/Flask-Revuu-It)
-### [Heroku Deployed App](https://flask-revuu-it.herokuapp.com/)
+### [Heroku Live Deployed App](https://flask-revuu-it.herokuapp.com/)
 
 Milestone 3 Project: Code Institute: Revuu-IT
 
