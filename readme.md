@@ -13,7 +13,7 @@ Milestone 3 Project: Code Institute: Revuu-IT
 2. [**UX**](#ux)
    - [**Concept**](#concept)
    - [**Database**](#database)
-   - - [**Schema**](#schema)
+   - [**Schema**](#schema)
  
 3. [**Features**](#features)
    - [**Features Left to Implement**](#Features-Left-to-Implement)
@@ -24,6 +24,8 @@ Milestone 3 Project: Code Institute: Revuu-IT
    - [**Viewports/Responsiveness**](#Viewports-Responsiveness)
    - [**Functional Testing**](#funtional-testing)
    - [**Database CRUD Operations**](#database-crud-operations)
+   - [**Compliance**](#compliance)
+   - [**Issues**](#issues)
  
 6. [**Deployment**](#deployment)
  
@@ -126,9 +128,9 @@ The mongoDB BSON based Collection uses the the online Cloud DB Atlas from Mongo 
     - [HTML5](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5) - used for Hyper text markup language.
 12. ![CSS3](https://img.shields.io/static/v1?label=CSS&message=3&color=1572B6&logo=css3&logoColor=ffffff)
     - [CSS3](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS3) - Used for cascading stylesheets.
-13. - [Visual Paradigm](https://online.visual-paradigm.com/) - Schema Diagrams
-14. - [Jinja](https://jinja.palletsprojects.com/en/2.11.x/) - Jinja - Templating language.
-15. - [Python V3.6.9](https://www.python.org/) - Python Programming language.
+13. [Visual Paradigm](https://online.visual-paradigm.com/) - Schema Diagrams
+14. [Jinja](https://jinja.palletsprojects.com/en/2.11.x/) - Jinja - Templating language.
+15. [Python V3.6.9](https://www.python.org/) - Python Programming language.
 
 
 ## Testing
@@ -146,6 +148,11 @@ Tablet
 
 Mobile
     320x480px scaled down to scale(0.219) 
+
+**Media Queries**
+Media Queries Break Screens based on Bulma Framework Breakpoints :
+- Main Page Header Text reduces in size on smaller screens
+- Bulma Framework handles many resizing of Rows and colums based on s/m factors chosen on page HTML.
 
 ### Functional Testing 
 Testing done on VSCode Using Live server - Mobile responsiveness also tested live via Heroku Live Hosted app.
@@ -191,14 +198,12 @@ Testing done on VSCode Using Live server - Mobile responsiveness also tested liv
 - When a user deletes their review the review is removed from the database.
 - When the Admin deletes a category the category is removed from the database.
  
-**Media Queries**
-Media Queries Break Screens based on Bulma Framework Breakpoints :
-- Main Page Header Text reduces in size on smaller screens
-- Bulma Framework handles many resizing of Rows and colums based on s/m factors chosen on page HTML.
+### Compliance
 
 **PEP8 Compliance**
-Python code was checked for PEP8 compliance using [PEP8 Checker](http://pep8online.com/)
-**Issues**
+Python code was checked for validity using PEP8 compliance : [PEP8 Checker](http://pep8online.com/)
+
+### Issues
  - User can add infinte emails to Database if already exists.
  - Admin needs to be able to delete all Reviews.
 
