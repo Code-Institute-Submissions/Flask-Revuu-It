@@ -145,11 +145,18 @@ Mobile
 Testing done on VSCode Using Live server.- Mobile responsiveness also tested live via Heroku Live Hosted app.
 
 - All page/card/footer links were tested to open.
+- Database CRUD operations using PyMongo
 - Navigation Buttons and Navbar links tested to navigate to specific pages.
 - Various screen sizes also tested from large screen to mobile.
 - Scrollable categories tested for each section.
 - Reviews Main page - stacking of elements on smaller screens.
 - Navbar Hamburger menu showing on mobile.
+- Add Review form Adding reviews to database and listing on reviews page
+- Edit Review and Delete buttons showing for relevant logged in users.
+- Admin Menu for Categories editing and adding showing and functions for Admin user.
+- Popular Reviews shows reviews with rating > 3
+- Recent Reviews shows the latest reviews added chronologically.
+- 
  
 **Media Queries**
 Media Queries Break Screens based on Bulma Framework Breakpoints :
@@ -194,7 +201,7 @@ Deployed using Heroku accessed via the link below
        ### SMTP Flaskmail config - Can be found in [app.py](https://github.com/Dermomurphy/Flask-Revuu-It/blob/main/app.py)
    
   #### 6: Requirements
-  1. Using a terminal window command prompt input  **pip3 freeze --local > requirements.txt** to create a requirements.txt file in order for Heroku to install all requirements necessary.
+  1. Using a terminal window command prompt input  `pip3 freeze --local > requirements.txt` to create a requirements.txt file in order for Heroku to install all requirements necessary.
 
 
   #### 7: Pushing files to Heroku hosted 
@@ -207,7 +214,7 @@ Deployed using Heroku accessed via the link below
 
   #### 9: How to Run the App locally
   1. Open your terminal command window
-  2. Type in **python3 app.py** to run the app. Open a web browser and point it to localhost 0.0.0.0:5000 (port 5000)
+  2. Type in `python3 app.py` to run the app. Open a web browser and point it to localhost 0.0.0.0:5000 (port 5000)
        
   
 ## Credits

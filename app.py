@@ -399,13 +399,13 @@ def newsletter():
         flash("Newsletter Signup Successful")
         # Send Email to  Email on form newsletter
         send_to = request.form.get('newsletter_email')
-        msg = Message('Hello', sender='info@dublin-360.com',
+        msg = Message('RevUU-IT: Newsletter Sign Up Confirmation', sender='info@dublin-360.com',
                       recipients=[send_to])
-        msg.body = "Hello {} {} ,Thank you for registering to Revuu-IT".format(
-                    request.form.get('first_name'),
-                    request.form.get('last_name'))
+        first_name = request.form.get('first_name')
+        last_name = request.form.get('last_name')
+        msg.body = f"Hi {first_name} {last_name},\nThank you for registering to RevUU-IT"
         mail.send(msg)
-        flash("Mail Sent to {}".format(request.form.get('newsletter_email')))
+        flash("Mail Sent to {}".format(send_to))
 
     return render_template('newsletter.html', user_email=user_email)
 
