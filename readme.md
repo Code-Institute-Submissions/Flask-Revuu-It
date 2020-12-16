@@ -299,12 +299,9 @@ Deployed using Heroku accessed via the link below
             * users
             * reviews
             * newsletter
-
         - Populate the categories collection with Key Value pairs outlined below:
             * category_name: (String)
             * tag_style: (String)
-        
-
         - Populate the reviews collection with key value pairs outlined below:
             * category_name: (String)
             * review_title: (String)
@@ -315,21 +312,18 @@ Deployed using Heroku accessed via the link below
                 * image_url: (String)
             * created_by: (String)
             * agree_terms(String)
-
         -  Populate the users collection with the key value pairs outlined below:
             * username: (String)
             * email: (String)
             * password: (String)
             * ts: (double)
-        
         -  Populate the newsletter collection with the key value pairs outlined below:
             * first_name: (String)
             * last_name:(String)
             * newsletter_email:(String)
             * newsletter_terms: (String)
             * registered: (String)
-            * created_by: (String)
-            
+            * created_by: (String)         
     5. Adding local enviroment varibales:
     - Go to MongoDB and copy the srv link to your database (go to "Command Line Tools", "Connect Instruction", "Connect your application" and copy the link).
     - To the env.py add the secret key and MongoDB URI:
