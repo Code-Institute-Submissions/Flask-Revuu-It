@@ -42,11 +42,26 @@ A Site developed for MS3 Project in Code Institute. The site consists of a revie
 Users may Register with their own username, email and password. Data is stored in an Atlas MongoDb cluster. Once registered the user may login. A logged in user has the ability to add a new review based on a category of choice. The user may only edit or Delete their own reviews.
 The Admin user has the ability to add edit and delete categories and any reviews they may submit.
 For demonstration purposese the admin can login using the details below:
-- User: admin 
-- password: 12345
 
  
 ## UX
+
+### User Stories:
+As as User I have the ability to :
+1. See Reviews of local places, movies, books, points of interest and any rental accommodation in my area.
+2. I Can login to the site creating a  username and secure password.
+3. Once logged in I can see my user profile and time and date created . 
+4. As a logged in user I have the ability to add any new REviews.  I can select a title, Image URL and write a description using the content editor provided. I can also give this review a star rating out of 5 stars, 5 being the highest mark. I have to agree to our terms of service to post the new review.
+5. If I have made a misttake or wish to delete or edit my review I can do so on the reviews page or user profile page to see my reviews. There I have the option to edit or delete any review I have created.
+
+### Admin Stories:
+As an Admin I have the ability to : 
+1. I can login to the site using the admin username and password.
+2. I have the ability to add or delete any reviews I make.
+3. I have the credentials to add /Edit or delete Review Categories. Using the manage categories tab.
+4. Have the ability to Edit any Category and choose the appropriate styling for that category.
+
+### User Journey:
 
 - The user can add a review by clicking the 'New Review' menu link. They can select a category for their review, a Title , paste an image url hyperlink and add a content edited review description that uses the CKEDITOR. The user must agree to the terms & Conditions and can add a star rating based on their review. Submitting will add the review to the Reviews Page.
 - Popular reviews - Any Reviews with a star rating of 4 or above are displayed on this page
@@ -56,6 +71,8 @@ For demonstration purposese the admin can login using the details below:
 - If a user tries to access a page they do not have access to they are redirected to the login page.
 - If a user is not logged in they cannot see the add review page and profile page. A user not logged in can see the login and register icons and only view reviews. The categories sidebar is also hidden from view.
 - If a user is logged in they can see the add review page and profile page. The login and Register icons are also hidden and a logout button is present. The categories sidebar is visible.
+
+
 
 
 ### Initial Concept
@@ -204,10 +221,12 @@ Testing done on VSCode Using Live server - Mobile responsiveness also tested liv
 **PEP8 Compliance**
 Python code was checked for validity using PEP8 compliance : [PEP8 Checker](http://pep8online.com/)
 
-### Issues
+### Features Left to Implement
  - User can add infinte newsletter singup emails to Database if already exists in database.
  - Admin needs to be able to delete all Reviews.
- - Should have initialised python environment in a penv to minimise requirements file
+ - Should have initialised python environment in a penv to minimise requirements file.
+ - UserID in users should match created_by in reviews collection not the username for better verificiation and collection data retrieval.
+ - Category ID should match to Review Category_id  instead of category_name for better data retrieval.
 
 
 
@@ -225,16 +244,26 @@ Deployed using Heroku accessed via the link below
    2. Create a new app [must have a unique name] and select your region
 
    #### 3: Synced folder on local machine to Github Repo via VsCode: https://github.com/Dermomurphy/Flask-Revuu-It automatic deployment on Heroku.
-   - Configure Procfile to have content `web: python app.py` in order to deploy app using python on Heroku. 
+     -  Synced folder on local machine to Github Repo via VsCode: https://github.com/Dermomurphy/Flask-Revuu-It
 
-   #### 4: Set environment variables in env.py locally and on Heroku.
+     - To run this code on your local machine, you would go to my respository at https://github.com/Dermomurphy/Flask-Revuu-It and on the home page on the right hand side just above all the files, you will see a green button that says, "Clone or download", this button will give you options to clone with HTTPS, open in desktop or download as a zip file. Then --> click the clipboard item to copy the Https address of the repo.
+     **Open Git Bash/Terminal:**
+     CD into the working directory to the location where you want the cloned directory to be made.you can use mkdir command to make a new directory, then cd into it.Type `git clone`, and then paste the URL: https://github.com/Dermomurphy/Flask-Revuu-It.git Press Enter. The clone is created.
+     For more information about the above process; https://help.github.com/en/github/using-git/which-remote-url-should-i-use
+
+
+     - Configure Procfile to have content `web: python app.py` in order to deploy app using python on Heroku. 
+
+   #### 4: Set environment variables in env.py locally and on Heroku config variables.
+   - Create an env.py file in the apps root directory.
+   - Add the env.py file to your .gitignore file
    - In order to deploy in Heroku set Config vars located in settings to below. Click Reveal config vars to input these variables.
 
    **Set a (KEY, VALUE)**
    - ("IP","0.0.0.0")
    - ("PORT" , "5000")
    - ("SECRET_KEY" ,  **<USER_SECRETKEY>**)
-   - ("MONGO_URI", mongodb+srv://root:**<USER_PASSWORD>**@**<USER_CLUSTER>**.2qobt.mongodb.net/**<USER_DB_NAME**?retryWrites=true&w=majority)
+   - ("MONGO_URI", mongodb+srv://root:**<USER_PASSWORD>**@**<USER_CLUSTER>**.tto0e.mongodb.net/**<USER_DB_NAME>**?retryWrites=true&w=majority)
    - ("MONGO_DBNAME" ,**<USER_DB_NAME>**)  current 'revuu_data'
    - ("MAIL_USERNAME" , **<USER_EMAIL>**)
    - ("MAIL_PASSWORD" , **<USER_MAIL_PASSWORD>**)
@@ -249,8 +278,8 @@ Deployed using Heroku accessed via the link below
 
 
    #### 7: Pushing files to Heroku hosted. 
-   1. In the terminal window type in **heroku login** and fill in your heroku credentials and password
-   2. Commit all your files and type in the same terminal window **git push heroku master**. 
+   1. In the terminal window type in `heroku login` and fill in your heroku credentials and password
+   2. Commit all your files and type in the same terminal window `git push heroku master`. 
 
    #### 8: Open Deployed App in Heroku.
    1. Click on **Open app** in the Heroku account, the application will open in a new tab within the browser
@@ -258,7 +287,67 @@ Deployed using Heroku accessed via the link below
 
    #### 9: How to Run the App locally.
    1. Open your terminal command window
-   2. Type in `python3 app.py` to run the app. Open a web browser and point it to localhost 0.0.0.0:5000 (port 5000)
+   2. Syncing from Github - As outlined above in Process 3
+   3. Install the requirements by typing `pip3 install -r requirements.txt` in your CLI
+   4. Create a Database in MongoDB:
+
+    Create or login to a MongoDB account.
+    Create a new project Name.
+    Add a new cluster to this prpoject give it a unique name.
+    - create a new database, name it accordingly (revuu_data) and create these three collections:
+        * categories
+        * users
+        * reviews
+        * newsletter
+
+    - Populate the categories collection with Key Value pairs outlined below:
+        category_name: (String)
+        tag_style: (String)
+       
+
+    - Populate the reviews collection with key value pairs outlined below:
+        category_name: (String)
+        review_title: (String)
+        review_description: (String)
+        ts: (Double)
+        star_rating: (Int32)
+        images: (Object of Strings)
+            image_url: (String)
+        created_by: (String)
+        agree_terms(String)
+
+    -  Populate the users collection with the key value pairs outlined below:
+        username: (String)
+        email: (String)
+        password: (String)
+        ts: (String)
+    
+    -  Populate the newsletter collection with the key value pairs outlined below:
+        first_name: (String)
+        last_name:(String)
+        newsletter_email:(String)
+        newsletter_terms: (String)
+        registered: (String)
+        created_by: (String)
+        
+        
+
+    - Adding local enviroment varibales:
+
+        Go to MongoDB and copy the srv link to your database (go to "Command Line Tools", "Connect Instruction", "Connect your application" and copy the link).
+        To the env.py add the secret key and MongoDB URI:
+        add the environmen variables below to your env.py file:
+
+        os.environ.setdefault("IP", "0.0.0.0")
+        os.environ.setdefault("PORT", "5000")
+        os.environ.setdefault("MONGODB_URI", "mongodb+srv://root:**<USER_PASSWORD>**@**<USER_CLUSTER>**.tto0e.mongodb.net/**<USER_DB_NAME>**?retryWrites=true&w=majority")
+        os.environ.setdefailt("SECRET_KEY"], <SECRET_KEY>)
+        os.environ.setdefault("MAIL_USERNAME", <USER_EMAIL>)
+        os.environ.setdefault("MAIL_PASSWORD", <USERMAIL_PASSWORD>)
+
+
+
+   4. Type in `python3 app.py` in the CLI to run the app. Open a web browser and point it to localhost 0.0.0.0:5000 (port 5000)
        
   
 ## Credits
