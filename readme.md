@@ -330,17 +330,16 @@ Deployed using Heroku accessed via the link below
             * created_by: (String)
             
     5. Adding local enviroment varibales:
+    - Go to MongoDB and copy the srv link to your database (go to "Command Line Tools", "Connect Instruction", "Connect your application" and copy the link).
+    - To the env.py add the secret key and MongoDB URI:
+    - add the environment variables below to your env.py file:
 
-        Go to MongoDB and copy the srv link to your database (go to "Command Line Tools", "Connect Instruction", "Connect your application" and copy the link).
-        To the env.py add the secret key and MongoDB URI:
-        add the environment variables below to your env.py file:
-
-        os.environ.setdefault("IP", "0.0.0.0")
-        os.environ.setdefault("PORT", "5000")
-        os.environ.setdefault("MONGODB_URI", "mongodb+srv://root:**<USER_PASSWORD>**@**<USER_CLUSTER>**.tto0e.mongodb.net/**<USER_DB_NAME>**?retryWrites=true&w=majority")
-        os.environ.setdefailt("SECRET_KEY"], <SECRET_KEY>)
-        os.environ.setdefault("MAIL_USERNAME", <USER_EMAIL>)
-        os.environ.setdefault("MAIL_PASSWORD", <USERMAIL_PASSWORD>)
+        * os.environ.setdefault("IP", "0.0.0.0")
+        * os.environ.setdefault("PORT", "5000")
+        * os.environ.setdefault("MONGODB_URI", "mongodb+srv://root:**<USER_PASSWORD>**@**<USER_CLUSTER>**.tto0e.mongodb.net/**<USER_DB_NAME>**?retryWrites=true&w=majority")
+        * os.environ.setdefailt("SECRET_KEY"], <SECRET_KEY>)
+        * os.environ.setdefault("MAIL_USERNAME", <USER_EMAIL>)
+        * os.environ.setdefault("MAIL_PASSWORD", <USERMAIL_PASSWORD>)
 
 
 
