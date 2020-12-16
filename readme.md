@@ -290,47 +290,46 @@ Deployed using Heroku accessed via the link below
    2. Syncing from Github - As outlined above in Process 3
    3. Install the requirements by typing `pip3 install -r requirements.txt` in your CLI
    4. Create a Database in MongoDB:
+        Create or login to a MongoDB account.
+        Create a new project Name.
+        Add a new cluster to this prpoject give it a unique name.
+        - create a new database, name it accordingly (revuu_data) and create these three collections:
+            * categories
+            * users
+            * reviews
+            * newsletter
 
-    Create or login to a MongoDB account.
-    Create a new project Name.
-    Add a new cluster to this prpoject give it a unique name.
-    - create a new database, name it accordingly (revuu_data) and create these three collections:
-        * categories
-        * users
-        * reviews
-        * newsletter
-
-    - Populate the categories collection with Key Value pairs outlined below:
-        category_name: (String)
-        tag_style: (String)
-       
-
-    - Populate the reviews collection with key value pairs outlined below:
-        category_name: (String)
-        review_title: (String)
-        review_description: (String)
-        ts: (Double)
-        star_rating: (Int32)
-        images: (Object of Strings)
-            image_url: (String)
-        created_by: (String)
-        agree_terms(String)
-
-    -  Populate the users collection with the key value pairs outlined below:
-        username: (String)
-        email: (String)
-        password: (String)
-        ts: (double)
-    
-    -  Populate the newsletter collection with the key value pairs outlined below:
-        first_name: (String)
-        last_name:(String)
-        newsletter_email:(String)
-        newsletter_terms: (String)
-        registered: (String)
-        created_by: (String)
+        - Populate the categories collection with Key Value pairs outlined below:
+            category_name: (String)
+            tag_style: (String)
         
+
+        - Populate the reviews collection with key value pairs outlined below:
+            category_name: (String)
+            review_title: (String)
+            review_description: (String)
+            ts: (Double)
+            star_rating: (Int32)
+            images: (Object of Strings)
+                image_url: (String)
+            created_by: (String)
+            agree_terms(String)
+
+        -  Populate the users collection with the key value pairs outlined below:
+            username: (String)
+            email: (String)
+            password: (String)
+            ts: (double)
         
+        -  Populate the newsletter collection with the key value pairs outlined below:
+            first_name: (String)
+            last_name:(String)
+            newsletter_email:(String)
+            newsletter_terms: (String)
+            registered: (String)
+            created_by: (String)
+            
+            
 
     5. Adding local enviroment varibales:
 
