@@ -293,7 +293,7 @@ Deployed using Heroku accessed via the link below
    4. Create a Database in MongoDB:
         Create or login to a MongoDB account.
         Create a new project Name.
-        Add a new cluster to this prpoject give it a unique name.
+        Add a new cluster to this project give it a unique name.
         - create a new database, name it accordingly (revuu_data) and create these three collections:
             * categories
             * users
